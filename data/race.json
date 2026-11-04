@@ -1,0 +1,97 @@
+{
+ "generated_at": "2026-11-04T17:44:17+00:00",
+ "as_of": "2026-11-04",
+ "start_cash_dkk": 20000.0,
+ "costs": {
+  "commission_pct": 0.08,
+  "min_commission": {
+   "USD": 1.0,
+   "DKK": 10.0
+  },
+  "fx_fee_pct": 0.25,
+  "slippage_bps": 5
+ },
+ "bots": [
+  {
+   "id": "saxoman",
+   "name": "SAXOMAN",
+   "style": "Saxoman port",
+   "version": "v0",
+   "start": null,
+   "retired": null,
+   "color": "#d55181",
+   "kind": "AI agent",
+   "status": "not started",
+   "summary": null,
+   "equity": [],
+   "holdings": [],
+   "trades": [],
+   "notes": []
+  },
+  {
+   "id": "bruno",
+   "name": "BRUNO",
+   "style": "Daily analyst",
+   "version": "v1",
+   "start": "2026-11-16",
+   "retired": null,
+   "color": "#3987e5",
+   "kind": "AI agent",
+   "status": "waiting",
+   "summary": null,
+   "equity": [],
+   "holdings": [],
+   "trades": [],
+   "notes": []
+  },
+  {
+   "id": "trend_rider",
+   "name": "TREND RIDER",
+   "style": "Momentum",
+   "version": "v1",
+   "start": "2026-11-16",
+   "retired": null,
+   "color": "#d95926",
+   "kind": "rules",
+   "status": "waiting",
+   "summary": null,
+   "equity": [],
+   "holdings": [],
+   "trades": [],
+   "notes": []
+  },
+  {
+   "id": "rubber_band",
+   "name": "RUBBER BAND",
+   "style": "Mean reversion",
+   "version": "v1",
+   "start": "2026-11-16",
+   "retired": null,
+   "color": "#199e70",
+   "kind": "rules",
+   "status": "waiting",
+   "summary": null,
+   "equity": [],
+   "holdings": [],
+   "trades": [],
+   "notes": []
+  },
+  {
+   "id": "catalyst",
+   "name": "CATALYST",
+   "style": "Earnings drift",
+   "version": "v1",
+   "start": "2026-11-16",
+   "retired": null,
+   "color": "#c98500",
+   "kind": "rules + AI check",
+   "status": "waiting",
+   "summary": null,
+   "equity": [],
+   "holdings": [],
+   "trades": [],
+   "notes": []
+  }
+ ],
+ "benchmarks": {}
+}
