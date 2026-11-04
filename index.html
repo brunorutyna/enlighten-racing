@@ -3,78 +3,138 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Enlighten Racing</title>
+<title>Enlighten Racing · Trading Bot Grand Prix</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏁</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
 :root{
   color-scheme:dark;
-  --bg:#0a1120; --surface:#0e1626; --panel:#111b2e; --panel2:#172441; --line:#253355;
+  --bg:#0a1120; --panel:#111b2e; --panel2:#172441; --line:#253355;
   --text:#e9edf6; --muted:#8ea0c2; --faint:#5d6d8f;
-  --good:#3ccf8e; --bad:#ff6b6b; --warn:#f2b84b; --ref:#8ea0c2;
-  --r:12px;
-  --display:"Space Grotesk",system-ui,sans-serif; --body:"Inter",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,monospace;
+  --good:#3ccf8e; --bad:#ff6b6b; --gold:#f5c542; --silver:#c9d3e3; --bronze:#d69a5c;
+  --r:14px;
+  --display:"Bungee","Space Grotesk",system-ui,sans-serif; --head:"Space Grotesk",system-ui,sans-serif;
+  --body:"Inter",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,monospace;
 }
 *{box-sizing:border-box}
 html,body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 var(--body)}
+body{background:radial-gradient(1200px 500px at 70% -10%,#1b2b52 0,transparent 60%),var(--bg)}
 a{color:#7fb2ff}
-.wrap{max-width:1180px;margin:0 auto;padding:28px 20px 60px}
-header{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end;justify-content:space-between;margin-bottom:22px}
-h1{font:700 34px/1.1 var(--display);margin:0;letter-spacing:-.5px}
-h1 small{display:block;font:500 13px var(--body);color:var(--muted);letter-spacing:.3px;margin-top:6px}
-h2{font:600 18px var(--display);margin:0 0 12px}
-.stamp{font:12px var(--mono);color:var(--muted);text-align:right}
-.stale{display:none;margin:0 0 18px;padding:10px 14px;border:1px solid #6b4a12;background:#2a1f0b;border-radius:var(--r);color:var(--warn);font-size:14px}
+.wrap{max-width:1180px;margin:0 auto;padding:18px 18px 60px}
+nav{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+.brand{font:400 22px var(--display);letter-spacing:.5px;display:flex;align-items:center;gap:10px}
+.flag{width:28px;height:20px;border-radius:3px;background:conic-gradient(#fff 25%,#111 0 50%,#fff 0 75%,#111 0) 0 0/10px 10px;box-shadow:0 0 0 1px #333}
+.links{display:flex;gap:6px}
+.links a{color:var(--muted);text-decoration:none;font:600 13px var(--head);padding:7px 12px;border-radius:99px;border:1px solid var(--line)}
+.links a[aria-current=page]{color:var(--text);background:var(--panel2)}
+.links a:hover{color:var(--text)}
+.stamp{font:12px var(--mono);color:var(--muted)}
+.stale{display:none;margin:0 0 16px;padding:10px 14px;border:1px solid #6b4a12;background:#2a1f0b;border-radius:var(--r);color:#f2b84b;font-size:14px}
 .panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:18px;margin-bottom:18px}
-.hero{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-bottom:18px}
-.tile{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;position:relative;overflow:hidden}
-.tile .k{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.8px}
-.tile .v{font:600 24px var(--mono);margin-top:4px}
-.tile .s{font:12px var(--mono);color:var(--muted)}
-.tile .bar{position:absolute;left:0;top:0;bottom:0;width:4px}
+h2{font:700 19px var(--head);margin:0 0 4px;display:flex;align-items:center;gap:8px}
+.sub{color:var(--muted);font-size:13px;margin:0 0 14px}
+/* hero */
+.hero{display:grid;grid-template-columns:1.3fr 1fr;gap:18px;margin-bottom:18px}
+@media(max-width:820px){.hero{grid-template-columns:1fr}}
+.hero .panel{margin:0}
+.daytag{font:400 13px var(--display);color:var(--gold);letter-spacing:1px}
+.headline{font:700 30px/1.15 var(--head);margin:6px 0 10px}
+.headline .who{display:inline-flex;align-items:center;gap:8px}
+.commentary{list-style:none;margin:0;padding:0}
+.commentary li{padding:7px 0;border-top:1px dashed #22304d;font-size:14px}
+.commentary li:first-child{border-top:0}
+.awards{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.award{background:var(--panel2);border-radius:12px;padding:12px;border:1px solid var(--line)}
+.award .k{font:600 11px var(--head);text-transform:uppercase;letter-spacing:.8px;color:var(--muted)}
+.award .v{font:700 16px var(--head);margin-top:4px;display:flex;align-items:center;gap:6px}
+.award .s{font:12px var(--mono);color:var(--muted)}
+/* track */
+.track{position:relative;border-radius:12px;overflow:hidden;background:repeating-linear-gradient(90deg,#14203a 0 2px,transparent 2px 10%),linear-gradient(#0f1830,#0c1427)}
+.lane{position:relative;height:52px;border-bottom:2px dashed #22304d;display:flex;align-items:center}
+.lane:last-child{border-bottom:0}
+.lane .label{position:absolute;left:10px;font:600 12px var(--head);color:var(--muted);z-index:1;white-space:nowrap;max-width:28%;overflow:hidden;text-overflow:ellipsis}
+.car{position:absolute;top:50%;transform:translate(-50%,-50%);transition:left 1.6s cubic-bezier(.2,.8,.2,1);display:flex;align-items:center;gap:6px;z-index:2}
+.car .em{font-size:28px;filter:drop-shadow(0 2px 6px rgba(0,0,0,.6));transform:scaleX(-1)}
+.car .tag{font:600 12px var(--mono);background:var(--panel2);border:1px solid var(--line);border-radius:99px;padding:1px 8px;white-space:nowrap}
+.car.ghost{opacity:.55}
+.car .trail{position:absolute;right:100%;height:4px;border-radius:2px;top:50%;transform:translateY(-50%);width:60px;opacity:.6}
+.finish{position:absolute;top:0;bottom:0;width:8px;background:conic-gradient(#fff 25%,#111 0 50%,#fff 0 75%,#111 0) 0 0/8px 8px;opacity:.5}
+.zero{position:absolute;top:0;bottom:0;width:2px;background:#3a4a6e}
+.axis{display:flex;justify-content:space-between;font:11px var(--mono);color:var(--faint);margin-top:6px}
+/* podium */
+.podium{display:grid;grid-template-columns:1fr 1.15fr 1fr;gap:12px;align-items:end;margin-bottom:18px}
+@media(max-width:700px){.podium{grid-template-columns:1fr}}
+.step{border-radius:var(--r);padding:16px;text-align:center;border:1px solid var(--line);background:var(--panel);position:relative;overflow:hidden}
+.step .medal{font-size:30px}
+.step .em{font-size:44px;line-height:1.1;margin:4px 0}
+.step .nm{font:700 17px var(--head)}
+.step .ret{font:700 26px var(--mono)}
+.step .mini{font:12px var(--mono);color:var(--muted)}
+.step.p1{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold) inset,0 10px 40px rgba(245,197,66,.12);padding-top:26px}
+.step.p2{border-color:var(--silver)} .step.p3{border-color:var(--bronze)}
+.step .stripe{position:absolute;left:0;right:0;top:0;height:5px}
+/* tables + charts */
 table{width:100%;border-collapse:collapse;font-size:14px}
-th{font:500 11px var(--body);text-transform:uppercase;letter-spacing:.7px;color:var(--muted);text-align:right;padding:8px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
-th:first-child,td:first-child{text-align:left}
+th{font:600 11px var(--head);text-transform:uppercase;letter-spacing:.7px;color:var(--muted);text-align:right;padding:8px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+th:first-child,td:first-child,th:nth-child(2),td:nth-child(2){text-align:left}
 td{padding:9px 10px;border-bottom:1px solid #1b2742;text-align:right;font-family:var(--mono);white-space:nowrap}
 tr:last-child td{border-bottom:0}
-.name{font:600 14px var(--body);display:flex;align-items:center;gap:9px}
-.key{width:14px;height:3px;border-radius:2px;flex:none}
+.name{font:600 14px var(--head);display:flex;align-items:center;gap:8px}
+.key{width:14px;height:4px;border-radius:2px;flex:none}
 .pos{color:var(--good)} .neg{color:var(--bad)} .mut{color:var(--muted)}
-.chip{font:500 11px var(--body);padding:2px 8px;border-radius:99px;border:1px solid var(--line);color:var(--muted)}
-.chartbox{position:relative}
-.chartbox svg{display:block;width:100%;height:auto;overflow:visible}
+.chip{font:600 10px var(--head);padding:2px 8px;border-radius:99px;border:1px solid var(--line);color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+.chip.mz{border-color:#9085e9;color:#c4bdf7}
+.scroll{overflow-x:auto}
+.chartbox{position:relative} .chartbox svg{display:block;width:100%;height:auto;overflow:visible}
 .legend{display:flex;flex-wrap:wrap;gap:14px;margin:0 0 10px;font-size:13px;color:var(--muted)}
 .legend span{display:flex;align-items:center;gap:6px}
-.tip{position:absolute;pointer-events:none;background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:8px 10px;font:12px var(--mono);min-width:150px;display:none;box-shadow:0 8px 24px rgba(0,0,0,.4);z-index:5}
+.tip{position:absolute;pointer-events:none;background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:8px 10px;font:12px var(--mono);min-width:160px;display:none;box-shadow:0 8px 24px rgba(0,0,0,.4);z-index:9}
 .tip .d{color:var(--muted);margin-bottom:4px}
 .tip .row{display:flex;align-items:center;gap:8px;justify-content:space-between}
-.tip .row b{font-weight:600}
 .tip .row span{display:flex;align-items:center;gap:6px;color:var(--muted)}
-.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:18px}
-.bot h3{font:600 16px var(--display);margin:0;display:flex;align-items:center;gap:10px}
-.bot .meta{font-size:12px;color:var(--muted);margin:4px 0 12px}
-.bot h4{font:500 11px var(--body);text-transform:uppercase;letter-spacing:.7px;color:var(--muted);margin:14px 0 4px}
+.tabs{display:flex;gap:6px;margin-bottom:10px}
+.tabs button{background:none;border:1px solid var(--line);color:var(--muted);border-radius:99px;padding:5px 12px;font:600 12px var(--head);cursor:pointer}
+.tabs button[aria-pressed=true]{color:var(--text);background:var(--panel2)}
+button:focus-visible,a:focus-visible{outline:2px solid #7fb2ff;outline-offset:2px}
+/* garage */
+.garage{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:16px}
+.bot{margin:0;position:relative;overflow:hidden}
+.bot .bar{position:absolute;left:0;top:0;right:0;height:4px}
+.bot .top{display:flex;gap:12px;align-items:center}
+.bot .em{font-size:38px;line-height:1}
+.bot h3{font:700 17px var(--head);margin:0;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.bot .tl{font-size:13px;color:var(--muted)}
+.bot .nums{display:flex;gap:16px;margin:12px 0 4px;flex-wrap:wrap}
+.bot .nums div{font:12px var(--mono);color:var(--muted)} .bot .nums b{display:block;font:700 18px var(--mono);color:var(--text)}
+.bot h4{font:600 11px var(--head);text-transform:uppercase;letter-spacing:.7px;color:var(--muted);margin:14px 0 4px}
 .bot td,.bot th{padding:6px 5px;font-size:12px}
-.note{font-size:13px;color:var(--text);border-left:2px solid var(--line);padding:2px 0 2px 10px;margin:4px 0}
+.badges{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.badge{font:600 11px var(--head);padding:3px 9px;border-radius:99px;background:var(--panel2);border:1px solid var(--line)}
+.note{font-size:13px;border-left:2px solid var(--line);padding:2px 0 2px 10px;margin:4px 0}
 .note i{color:var(--muted);font-style:normal;font-family:var(--mono);font-size:12px;margin-right:6px}
-.empty{color:var(--muted);font-size:13px;padding:6px 0}
-.pre{text-align:center;padding:36px 18px}
-.pre .big{font:700 28px var(--display)}
-.scroll{overflow-x:auto}
+.empty{color:var(--muted);font-size:13px;padding:4px 0}
+/* mega zord */
+.mz{background:linear-gradient(135deg,#1b1540,#111b2e 60%);border-color:#4b3fa0}
+.mzhead{display:flex;gap:14px;align-items:center}
+.mzhead .robot{font-size:52px;animation:bob 3s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-5px) rotate(-3deg)}}
+@media (prefers-reduced-motion:reduce){.mzhead .robot{animation:none}.car{transition:none}}
+.mzteam{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.mzbot{background:#1f1a4a;border:1px solid #4b3fa0;border-radius:12px;padding:8px 12px;font:600 13px var(--head);display:flex;align-items:center;gap:8px}
 footer{color:var(--faint);font-size:12px;margin-top:28px;line-height:1.7}
-button.tab{background:none;border:1px solid var(--line);color:var(--muted);border-radius:8px;padding:4px 10px;font:12px var(--body);cursor:pointer}
-button.tab[aria-pressed=true]{color:var(--text);background:var(--panel2)}
-button.tab:focus-visible{outline:2px solid #7fb2ff;outline-offset:2px}
+.pre{text-align:center;padding:30px 18px}
+.pre .big{font:400 30px var(--display);color:var(--gold)}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <header>
-    <h1>Enlighten Racing<small>Paper-trading bots racing with fake money: 20,000 DKK each · US &amp; Danish stocks · Saxo-like costs</small></h1>
-    <div class="stamp" id="stamp">loading…</div>
-  </header>
+  <nav>
+    <div class="brand"><span class="flag" aria-hidden="true"></span>ENLIGHTEN RACING</div>
+    <div class="links"><a href="index.html" aria-current="page">🏁 The race</a><a href="about.html">❓ How it works</a></div>
+  </nav>
   <div class="stale" id="stale" role="status"></div>
-  <div id="app"></div>
+  <div id="app"><div class="panel pre"><div class="big">Warming up the engines…</div></div></div>
   <footer id="foot"></footer>
 </div>
 <div class="tip" id="tip"></div>
@@ -83,214 +143,283 @@ button.tab:focus-visible{outline:2px solid #7fb2ff;outline-offset:2px}
 const $ = (t, cls, txt) => { const e = document.createElement(t); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; };
 const NS = "http://www.w3.org/2000/svg";
 const S = (t, a) => { const e = document.createElementNS(NS, t); for (const k in a) e.setAttribute(k, a[k]); return e; };
-const dkk = v => v == null ? "–" : v.toLocaleString("da-DK", {maximumFractionDigits: 0}) + " kr";
-const pct = (v, d = 2) => v == null ? "–" : (v > 0 ? "+" : "") + v.toFixed(d) + "%";
+const dkk = v => v == null ? "–" : Math.round(v).toLocaleString("da-DK") + " kr";
+const pct = (v, d = 2) => v == null || !isFinite(v) ? "–" : (v > 0 ? "+" : "") + v.toFixed(d) + "%";
 const pp = v => v == null ? "–" : (v > 0 ? "+" : "") + v.toFixed(2) + " pp";
 const cls = v => v == null ? "mut" : v > 0 ? "pos" : v < 0 ? "neg" : "mut";
-const REF = {SPY: "#8ea0c2", "^OMXC25": "#5d6d8f"};
+const REF = {SPY: {c: "#8ea0c2", em: "🇺🇸", nm: "S&P 500"}, "^OMXC25": {c: "#5d6d8f", em: "🇩🇰", nm: "C25"}};
 
-fetch("data/race.json", {cache: "no-store"}).then(r => r.json()).then(render).catch(err => {
-  document.getElementById("stamp").textContent = "no data yet";
-  const app = document.getElementById("app");
-  const p = $("div", "panel pre"); p.append($("div", "big", "The race hasn't started yet"), $("p", "mut", "Results appear here after the first daily run."));
-  app.append(p);
+fetch("data/race.json", {cache: "no-store"}).then(r => r.json()).then(render).catch(() => {
+  const app = document.getElementById("app"); app.replaceChildren();
+  const p = $("div", "panel pre"); p.append($("div", "big", "The race hasn't started yet"), $("p", "mut", "Results appear here after the first daily run.")); app.append(p);
 });
 
+function stats(b, start) {
+  const eq = b.equity || [];
+  const last = eq.length ? eq[eq.length - 1].value : start;
+  const prev = eq.length > 1 ? eq[eq.length - 2].value : start;
+  let streak = 0;
+  for (let i = eq.length - 1; i > 0; i--) { const up = eq[i].value > eq[i - 1].value; if (i === eq.length - 1) streak = up ? 1 : -1; else if ((streak > 0) === up) streak += up ? 1 : -1; else break; }
+  const today = (b.trades || []).filter(t => eq.length && t.date === eq[eq.length - 1].date).length;
+  return {ret: (last / start - 1) * 100, day: (last / prev - 1) * 100, streak, today, days: eq.length};
+}
+
 function render(d) {
-  const app = document.getElementById("app");
-  document.getElementById("stamp").textContent = `as of ${d.as_of} close · updated ${d.generated_at.replace("T", " ").slice(0, 16)} UTC`;
-  const ageDays = (Date.now() - Date.parse(d.as_of + "T22:00:00Z")) / 864e5;
-  const dow = new Date(d.as_of).getUTCDay();
-  const racingNow = d.bots.some(b => b.equity && b.equity.length);
-  if (racingNow && ageDays > (dow === 5 ? 4 : 2)) {
-    const s = document.getElementById("stale");
-    s.style.display = "block";
-    s.textContent = `⚠ Stale: the last completed run was for ${d.as_of}. A daily run was missed, so the numbers below are not current.`;
+  const app = document.getElementById("app"); app.replaceChildren();
+  const start = d.start_cash_dkk || 20000;
+  d.bots.forEach(b => { b.st = stats(b, start); b.emoji = b.emoji || "🤖"; });
+  const racing = d.bots.filter(b => b.equity && b.equity.length && b.status !== "retired");
+  const ranked = [...racing].sort((a, b) => b.st.ret - a.st.ret);
+  const dayN = Math.max(0, ...racing.map(b => b.st.days));
+  const stamp = `Session ${d.as_of} · updated ${d.generated_at.replace("T", " ").slice(0, 16)} UTC`;
+  if (racing.length) {
+    const age = (Date.now() - Date.parse(d.generated_at)) / 864e5; const dow = new Date().getUTCDay();
+    if (age > (dow === 1 ? 3.3 : dow === 0 || dow === 6 ? 2.6 : 1.3)) {
+      const s = document.getElementById("stale"); s.style.display = "block";
+      s.textContent = `⚠ Pit-lane delay: the last update was ${d.generated_at.slice(0, 10)}. A daily run was missed, so these numbers aren't current.`;
+    }
   }
-  const racing = d.bots.filter(b => b.equity && b.equity.length);
-  if (!racing.length) { renderPre(app, d); footer(d); return; }
+  if (!racing.length) { renderPre(app, d, stamp); footer(d); return; }
 
-  // hero tiles: one per bot, ranked
-  const ranked = [...racing].sort((a, b) => b.summary.return_pct - a.summary.return_pct);
+  // ---------- hero: headline + commentary + awards
   const hero = $("div", "hero");
-  ranked.forEach((b, i) => {
-    const t = $("div", "tile"); const bar = $("div", "bar"); bar.style.background = b.color; t.append(bar);
-    t.append($("div", "k", `#${i + 1} ${b.name}`));
-    const v = $("div", "v " + cls(b.summary.return_pct), pct(b.summary.return_pct)); t.append(v);
-    t.append($("div", "s", `${dkk(b.summary.value)} · vs SPY ${pp(b.summary.vs_spy_pp)}`));
-    hero.append(t);
-  });
-  app.append(hero);
+  const left = $("section", "panel");
+  left.append($("div", "daytag", `DAY ${dayN} OF THE RACE`));
+  const L = ranked[0], R2 = ranked[1];
+  const h = $("div", "headline"); const who = $("span", "who"); who.append(document.createTextNode(L.emoji + " " + L.name));
+  h.append(who, document.createTextNode(L.st.ret >= 0 ? ` leads at ${pct(L.st.ret)}` : ` leads… at ${pct(L.st.ret)} (tough track!)`));
+  left.append(h);
+  const ul = $("ul", "commentary");
+  commentary(d, ranked, start).forEach(t => ul.append($("li", null, t)));
+  left.append(ul);
+  left.append($("div", "stamp", stamp));
+  const right = $("section", "panel"); right.append($("h2", null, "🏅 Today's awards"));
+  const aw = $("div", "awards");
+  const byDay = [...racing].sort((a, b) => b.st.day - a.st.day);
+  const busy = [...racing].sort((a, b) => b.st.today - a.st.today)[0];
+  const hot = [...racing].sort((a, b) => b.st.streak - a.st.streak)[0];
+  const safe = [...racing].sort((a, b) => (b.summary.max_dd_pct ?? -99) - (a.summary.max_dd_pct ?? -99))[0];
+  [["🚀 Fastest lap", byDay[0], pct(byDay[0].st.day) + " today"],
+   ["🛞 Flat tyre", byDay[byDay.length - 1], pct(byDay[byDay.length - 1].st.day) + " today"],
+   ["🔧 Busiest pit crew", busy, busy.st.today ? busy.st.today + " trades" : "quiet day: no trades"],
+   [hot.st.streak > 1 ? "🔥 Hot streak" : "🛡️ Smoothest ride", hot.st.streak > 1 ? hot : safe, hot.st.streak > 1 ? hot.st.streak + " up days in a row" : "max drawdown " + (safe.summary.max_dd_pct ?? 0).toFixed(1) + "%"]]
+   .forEach(([k, b, s]) => { const a = $("div", "award"); a.append($("div", "k", k)); const v = $("div", "v"); v.append(document.createTextNode(b.emoji + " " + b.name)); a.append(v, $("div", "s", s)); aw.append(a); });
+  right.append(aw);
+  hero.append(left, right); app.append(hero);
 
-  // race chart
-  const rp = $("section", "panel"); rp.append($("h2", null, "The race: each bot indexed to 100 at its own start"));
-  const series = racing.map(b => ({name: b.name, color: b.color, pts: indexSeries(b.equity, b.equity[0] ? d.start_cash_dkk : null)}));
-  const startDate = racing.map(b => b.start).sort()[0];
-  const bench = Object.entries(d.benchmarks || {}).map(([k, v]) => ({name: v.label, color: REF[k] || "#8ea0c2", dash: true,
-    pts: indexBench(v.series, startDate)})).filter(s => s.pts.length);
-  lineChart(rp, [...series, ...bench], {base: 100, fmt: v => v.toFixed(1)});
-  app.append(rp);
+  // ---------- the track
+  const tp = $("section", "panel"); tp.append($("h2", null, "🏎️ The track"), $("p", "sub", "Each car's position is its total return since its own start. The flags are the markets: the S&P 500 (in DKK) and Denmark's C25."));
+  track(tp, ranked, d, start); app.append(tp);
 
-  // drawdown chart
-  const dp = $("section", "panel"); dp.append($("h2", null, "Drawdown: distance below each bot's own peak"));
-  lineChart(dp, racing.map(b => ({name: b.name, color: b.color, pts: drawdown(b.equity, d.start_cash_dkk)})), {base: 0, fmt: v => v.toFixed(1) + "%", height: 200});
-  app.append(dp);
+  // ---------- podium
+  const pod = $("div", "podium");
+  const order = [ranked[1], ranked[0], ranked[2]];
+  ["p2", "p1", "p3"].forEach((cl, i) => { const b = order[i]; if (!b) { pod.append($("div")); return; }
+    const s = $("div", "step " + cl); const st = $("div", "stripe"); st.style.background = b.color; s.append(st);
+    s.append($("div", "medal", cl === "p1" ? "🥇" : cl === "p2" ? "🥈" : "🥉"), $("div", "em", b.emoji), $("div", "nm", b.name), $("div", "ret " + cls(b.st.ret), pct(b.st.ret)),
+      $("div", "mini", `${dkk(b.summary.value)} · vs S&P ${pp(b.summary.vs_spy_pp)}`)); pod.append(s); });
+  app.append(pod);
 
-  // leaderboard
-  const lp = $("section", "panel"); lp.append($("h2", null, "Leaderboard"));
-  const sc = $("div", "scroll"); const tb = $("table");
-  const head = ["Bot", "Value", "Return", "vs SPY (DKK)", "vs C25", "Max drawdown", "Sharpe", "Win rate", "Trades", "Days"];
-  const thr = $("tr"); head.forEach(h => thr.append($("th", null, h))); tb.append(thr);
-  ranked.concat(d.bots.filter(b => !racing.includes(b))).forEach(b => {
-    const s = b.summary || {}; const tr = $("tr");
-    const n = $("td"); const nm = $("div", "name"); const k = $("span", "key"); k.style.background = b.color;
-    nm.append(k, document.createTextNode(b.name), $("span", "chip", b.status === "racing" ? b.version : b.status)); n.append(nm); tr.append(n);
-    [[dkk(s.value)], [pct(s.return_pct), cls(s.return_pct)], [pp(s.vs_spy_pp), cls(s.vs_spy_pp)], [pp(s.vs_c25_pp), cls(s.vs_c25_pp)],
-     [s.max_dd_pct == null ? "–" : s.max_dd_pct.toFixed(1) + "%", s.max_dd_pct < 0 ? "neg" : "mut"],
-     [s.sharpe == null ? "–" : s.sharpe.toFixed(2)], [s.win_rate_pct == null ? "–" : s.win_rate_pct.toFixed(0) + "%"],
-     [s.trades ?? "–"], [s.days ?? "–"]].forEach(([v, c]) => tr.append($("td", c || null, String(v))));
-    tb.append(tr);
-  });
+  // ---------- charts
+  const cp = $("section", "panel"); cp.append($("h2", null, "📈 Race replay"));
+  const tabs = $("div", "tabs"); const box = $("div");
+  const views = {"Value (indexed to 100)": () => lineChart(box, [...racing.map(b => ({name: b.name, color: b.color, pts: idx(b.equity, start), marks: versionMarks(b)})), ...benchSeries(d, racing)], {base: 100, fmt: v => v.toFixed(1)}),
+                 "Drawdown": () => lineChart(box, racing.map(b => ({name: b.name, color: b.color, pts: dd(b.equity, start)})), {base: 0, fmt: v => v.toFixed(1) + "%", height: 220}),
+                 "Today's moves": () => dayBars(box, byDay)};
+  Object.keys(views).forEach((k, i) => { const bt = $("button", null, k); bt.setAttribute("aria-pressed", i === 0); bt.onclick = () => { tabs.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", x === bt)); box.replaceChildren(); views[k](); }; tabs.append(bt); });
+  cp.append(tabs, box); views["Value (indexed to 100)"](); app.append(cp);
+
+  // ---------- leaderboard
+  const lp = $("section", "panel"); lp.append($("h2", null, "📋 Full standings"));
+  const sc = $("div", "scroll"); const tb = $("table"); const thr = $("tr");
+  ["#", "Driver", "Value", "Return", "Today", "vs S&P 500", "vs C25", "Max drawdown", "Sharpe", "Win rate", "Trades", "Days"].forEach(x => thr.append($("th", null, x))); tb.append(thr);
+  const rest = d.bots.filter(b => !racing.includes(b));
+  ranked.concat(rest).forEach((b, i) => { const s = b.summary || {}; const tr = $("tr");
+    tr.append($("td", "mut", racing.includes(b) ? String(i + 1) : "–"));
+    const n = $("td"); const nm = $("div", "name"); nm.append(document.createTextNode(b.emoji + " " + b.name)); if (b.owner === "megazord") nm.append($("span", "chip mz", "Team MZ")); n.append(nm); tr.append(n);
+    [[dkk(s.value)], [pct(b.st.ret), cls(b.st.ret)], [pct(b.st.day), cls(b.st.day)], [pp(s.vs_spy_pp), cls(s.vs_spy_pp)], [pp(s.vs_c25_pp), cls(s.vs_c25_pp)],
+     [s.max_dd_pct == null ? "–" : s.max_dd_pct.toFixed(1) + "%", s.max_dd_pct < 0 ? "neg" : "mut"], [s.sharpe == null ? "–" : s.sharpe.toFixed(2)],
+     [s.win_rate_pct == null ? "–" : s.win_rate_pct.toFixed(0) + "%"], [s.trades ?? "–"], [s.days ?? "–"]].forEach(([v, c]) => tr.append($("td", c || null, String(v))));
+    tb.append(tr); });
   sc.append(tb); lp.append(sc);
-  lp.append($("p", "mut", "Sharpe is shown once a bot has 10+ days of history. Each bot is compared with SPY and C25 over its own dates, so bots that join later are scored fairly."));
+  lp.append($("p", "sub", "Bots that join later are compared with the markets over their own dates, so a late start is not a handicap. Sharpe (return per unit of risk) appears after 10 days."));
   app.append(lp);
 
-  // bot cards
-  const g = $("div", "grid2");
-  ranked.concat(d.bots.filter(b => !racing.includes(b))).forEach(b => g.append(botCard(b)));
-  app.append(g);
+  // ---------- Mega Zord
+  megaZord(app, d);
+
+  // ---------- garage
+  const gh = $("section"); gh.append($("h2", null, "🧰 The garage"), $("p", "sub", "What every driver holds right now and what it traded recently."));
+  const g = $("div", "garage"); ranked.concat(rest).forEach(b => g.append(botCard(b, d))); gh.append(g); app.append(gh);
   footer(d);
 }
 
-function renderPre(app, d) {
-  const p = $("div", "panel pre");
-  const starts = d.bots.map(b => b.start).filter(Boolean).sort();
-  p.append($("div", "big", starts.length ? `Race starts ${starts[0]}` : "Race not started"));
-  p.append($("p", "mut", "Each bot starts with 20,000 DKK of fake money. Results appear here after the first daily run."));
-  app.append(p);
-  const g = $("div", "grid2"); d.bots.forEach(b => g.append(botCard(b))); app.append(g);
+function commentary(d, ranked, start) {
+  const out = [];
+  const spy = d.benchmarks && d.benchmarks.SPY ? d.benchmarks.SPY.series : null;
+  if (ranked.length > 1) {
+    const gap = ranked[0].st.ret - ranked[1].st.ret;
+    out.push(gap < 0.25 ? `🎙️ Neck and neck! ${ranked[0].name} and ${ranked[1].name} are separated by ${gap.toFixed(2)} points.` : `🎙️ ${ranked[0].name} has a ${gap.toFixed(2)}-point lead over ${ranked[1].name}.`);
+  }
+  const last = ranked[ranked.length - 1]; if (ranked.length > 2) out.push(`🐢 ${last.name} brings up the rear at ${pct(last.st.ret)}.`);
+  const beat = ranked.filter(b => (b.summary.vs_spy_pp ?? -1) > 0).length;
+  out.push(`🇺🇸 ${beat} of ${ranked.length} bots are beating the S&P 500 so far.`);
+  const lastTrades = ranked.flatMap(b => (b.trades || []).slice(-1).map(t => ({b, t}))).sort((a, b) => b.t.date.localeCompare(a.t.date))[0];
+  if (lastTrades) out.push(`🔧 Latest pit stop: ${lastTrades.b.name} ${lastTrades.t.side === "buy" ? "bought" : "sold"} ${lastTrades.t.qty} ${lastTrades.t.symbol}.`);
+  const mz = (d.megazord && d.megazord.log) || []; if (mz.length) out.push(`🤖 Mega Zord: ${mz[mz.length - 1].text}`);
+  return out.slice(0, 5);
 }
 
-function botCard(b) {
-  const c = $("section", "panel bot");
-  const h = $("h3"); const k = $("span", "key"); k.style.background = b.color; k.style.width = "18px"; k.style.height = "4px";
-  h.append(k, document.createTextNode(b.name), $("span", "chip", b.kind)); c.append(h);
-  c.append($("div", "meta", `${b.style} · ${b.version} · ${b.start ? (b.status === "waiting" ? "starts " : "started ") + b.start : "start date not set"}${b.status && b.status !== "racing" ? " · " + b.status : ""}`));
-  if (b.summary) c.append($("div", "meta", `Cash ${dkk(b.cash_dkk)} · value ${dkk(b.summary.value)}`));
+function track(host, ranked, d, start) {
+  const ghosts = Object.entries(d.benchmarks || {}).map(([k, v]) => { const s = v.series || []; const st = ranked.map(b => b.start).sort()[0];
+    const before = s.filter(p => p.date < st); const base = before.length ? before[before.length - 1].value : (s[0] || {}).value;
+    const lastv = s.length ? s[s.length - 1].value : base; return {name: REF[k] ? REF[k].nm : k, emoji: REF[k] ? REF[k].em : "🏳️", ret: base ? (lastv / base - 1) * 100 : 0, color: REF[k] ? REF[k].c : "#888", ghost: true}; });
+  const all = ranked.map(b => ({name: b.name, emoji: b.emoji, ret: b.st.ret, color: b.color})).concat(ghosts);
+  const lo = Math.min(0, ...all.map(a => a.ret)), hi = Math.max(0.5, ...all.map(a => a.ret));
+  const span = (hi - lo) || 1; const x = v => 32 + (v - lo) / span * 58; // % of width
+  const t = $("div", "track"); t.setAttribute("role", "img"); t.setAttribute("aria-label", "Race track: " + all.map(a => `${a.name} ${pct(a.ret)}`).join(", "));
+  const z = $("div", "zero"); z.style.left = x(0) + "%"; t.append(z);
+  const f = $("div", "finish"); f.style.left = "calc(" + x(hi) + "% + 46px)"; t.append(f);
+  all.forEach(a => { const lane = $("div", "lane"); lane.append($("span", "label", a.name));
+    const car = $("div", "car" + (a.ghost ? " ghost" : "")); const tr = $("span", "trail"); tr.style.background = `linear-gradient(90deg,transparent,${a.color})`;
+    car.append(tr, $("span", "em", a.emoji), $("span", "tag " + cls(a.ret), pct(a.ret)));
+    car.style.left = x(0) + "%"; lane.append(car); t.append(lane);
+    requestAnimationFrame(() => requestAnimationFrame(() => { car.style.left = x(a.ret) + "%"; })); });
+  host.append(t);
+  const ax = $("div", "axis"); ax.append($("span", null, pct(lo, 1)), $("span", null, "start line 0%"), $("span", null, pct(hi, 1))); host.append(ax);
+}
+
+function megaZord(app, d) {
+  const team = d.bots.filter(b => b.owner === "megazord");
+  const log = (d.megazord && d.megazord.log) || [];
+  const p = $("section", "panel mz");
+  const h = $("div", "mzhead"); h.append($("div", "robot", "🤖"));
+  const t = $("div"); t.append($("h2", null, "MEGA ZORD's lab"), $("p", "sub", "The coach. It watches every bot, learns from their wins and crashes, and builds its own team of new bots. It can never touch the original five."));
+  h.append(t); p.append(h);
+  const tm = $("div", "mzteam");
+  if (team.length) team.forEach(b => { const x = $("div", "mzbot"); x.append(document.createTextNode(`${b.emoji} ${b.name}`), $("span", "chip mz", b.status === "retired" ? "benched" : b.version)); tm.append(x); });
+  else tm.append($("div", "empty", "No bots built yet. Mega Zord is still studying the field."));
+  p.append(tm);
+  if (log.length) { p.append($("h4", null, "")); log.slice(-4).reverse().forEach(n => { const q = $("div", "note"); q.append($("i", null, n.date), document.createTextNode(n.text)); p.append(q); }); }
+  app.append(p);
+}
+
+function botCard(b, d) {
+  const c = $("section", "panel bot"); const bar = $("div", "bar"); bar.style.background = b.color; c.append(bar);
+  const top = $("div", "top"); top.append($("div", "em", b.emoji));
+  const tt = $("div"); const h = $("h3"); h.append(document.createTextNode(b.name), $("span", "chip" + (b.owner === "megazord" ? " mz" : ""), b.owner === "megazord" ? "Team MZ · " + b.version : b.version));
+  tt.append(h, $("div", "tl", b.tagline || b.style || "")); top.append(tt); c.append(top);
+  const s = b.summary;
+  if (s) { const n = $("div", "nums");
+    [["Value", dkk(s.value)], ["Return", pct(b.st.ret)], ["Today", pct(b.st.day)], ["Cash", dkk(b.cash_dkk)]].forEach(([k, v]) => { const x = $("div"); x.append(document.createTextNode(k)); const bb = $("b", null, v); if (k === "Return" || k === "Today") bb.className = cls(k === "Return" ? b.st.ret : b.st.day); x.append(bb); n.append(x); });
+    c.append(n);
+    const bd = $("div", "badges");
+    if (b.st.days <= 5) bd.append($("span", "badge", "🐣 Rookie"));
+    if (b.st.streak >= 3) bd.append($("span", "badge", `🔥 ${b.st.streak}-day streak`));
+    if (b.st.streak <= -3) bd.append($("span", "badge", `🧊 ${-b.st.streak} down days`));
+    if (b.holdings && !b.holdings.length) bd.append($("span", "badge", "💤 All cash"));
+    if ((s.vs_spy_pp ?? -1) > 0) bd.append($("span", "badge", "🇺🇸 Beating the S&P"));
+    if (b.kind) bd.append($("span", "badge", b.kind === "AI agent" ? "🧠 AI driver" : b.kind === "rules" ? "⚙️ Rule-based" : "⚙️🧠 Rules + AI check"));
+    c.append(bd);
+  } else c.append($("div", "empty", b.start ? `On the grid. Starts ${b.start}.` : "Not started."));
   c.append($("h4", null, "Holdings"));
   if (b.holdings && b.holdings.length) {
     const t = $("table"); const r = $("tr"); ["Symbol", "Qty", "Value", "P/L", "Since"].forEach(x => r.append($("th", null, x))); t.append(r);
-    b.holdings.forEach(x => { const tr = $("tr");
-      tr.append($("td", null, x.symbol), $("td", null, String(x.qty)), $("td", null, dkk(x.value_dkk)), $("td", cls(x.pnl_pct), pct(x.pnl_pct, 1)), $("td", "mut", x.since.slice(5)));
-      t.append(tr); });
+    b.holdings.forEach(x => { const tr = $("tr"); tr.append($("td", null, x.symbol), $("td", null, String(x.qty)), $("td", null, dkk(x.value_dkk)), $("td", cls(x.pnl_pct), pct(x.pnl_pct, 1)), $("td", "mut", (x.since || "").slice(5))); t.append(tr); });
     c.append(t);
-  } else c.append($("div", "empty", b.summary ? "All cash." : "—"));
+  } else c.append($("div", "empty", b.summary ? "All cash, waiting for an opportunity." : "—"));
   c.append($("h4", null, "Recent trades"));
-  const tr = (b.trades || []).slice(-8).reverse();
-  if (tr.length) {
-    const t = $("table"); const r = $("tr"); ["Date", "Side", "Symbol", "Qty", "Price", "P/L"].forEach(x => r.append($("th", null, x))); t.append(r);
-    tr.forEach(x => { const row = $("tr");
-      row.append($("td", "mut", x.date.slice(5)), $("td", x.side === "buy" ? "pos" : "neg", x.side === "buy" ? "BUY" : "SELL"), $("td", null, x.symbol), $("td", null, String(x.qty)),
-        $("td", null, (x.ccy === "USD" ? "$" : "") + x.price.toFixed(2) + (x.ccy === "DKK" ? " kr" : "")), $("td", cls(x.pnl_dkk), x.pnl_dkk == null ? "" : dkk(x.pnl_dkk)));
-      t.append(row); });
-    const s = $("div", "scroll"); s.append(t); c.append(s);
+  const tr = (b.trades || []).slice(-6).reverse();
+  if (tr.length) { const t = $("table"); const r = $("tr"); ["Date", "Side", "Symbol", "Qty", "Price", "P/L"].forEach(x => r.append($("th", null, x))); t.append(r);
+    tr.forEach(x => { const row = $("tr"); row.append($("td", "mut", x.date.slice(5)), $("td", x.side === "buy" ? "pos" : "neg", x.side === "buy" ? "BUY" : "SELL"), $("td", null, x.symbol), $("td", null, String(x.qty)),
+      $("td", null, (x.ccy === "USD" ? "$" : "") + x.price.toFixed(2) + (x.ccy === "DKK" ? " kr" : "")), $("td", cls(x.pnl_dkk), x.pnl_dkk == null ? "" : dkk(x.pnl_dkk))); t.append(row); });
+    const sc = $("div", "scroll"); sc.append(t); c.append(sc);
   } else c.append($("div", "empty", "No trades yet."));
-  if (b.notes && b.notes.length) {
-    c.append($("h4", null, "Agent log"));
-    b.notes.slice(-3).reverse().forEach(n => { const p = $("div", "note"); p.append($("i", null, n.date), document.createTextNode(n.text)); c.append(p); });
-  }
+  const notes = (b.notes || []).slice(-2).reverse(); const hist = (b.history || []).filter(h => h.event === "updated" || h.event === "spawned").slice(-2).reverse();
+  if (notes.length || hist.length) { c.append($("h4", null, "Radio chatter"));
+    hist.forEach(n => { const p = $("div", "note"); p.append($("i", null, n.date), document.createTextNode(`${n.event === "spawned" ? "🛠️ Built by Mega Zord" : "🔧 Upgraded to " + n.version}${n.note ? ": " + n.note : ""}`)); c.append(p); });
+    notes.forEach(n => { const p = $("div", "note"); p.append($("i", null, n.date), document.createTextNode(n.text)); c.append(p); }); }
   return c;
 }
 
-function indexSeries(eq, start) {
-  return eq.map(e => ({x: e.date, y: e.value / start * 100}));
+function renderPre(app, d, stamp) {
+  const p = $("div", "panel pre"); const st = d.bots.map(b => b.start).filter(Boolean).sort();
+  p.append($("div", "daytag", "ON THE STARTING GRID"), $("div", "big", st.length ? `Lights out: ${st[0]}` : "Race not started"),
+    $("p", "mut", "Every driver gets 20,000 DKK of fake money. The first results appear after the first evening run."), $("div", "stamp", stamp));
+  app.append(p);
+  const gh = $("section"); gh.append($("h2", null, "🧰 Meet the drivers"));
+  const g = $("div", "garage"); d.bots.forEach(b => { b.st = b.st || {ret: 0, day: 0, streak: 0, today: 0, days: 0}; g.append(botCard(b, d)); }); gh.append(g); app.append(gh);
+  megaZord(app, d);
 }
-function indexBench(series, startDate) {
-  const before = series.filter(p => p.date < startDate); const base = (before.length ? before[before.length - 1] : series[0]);
-  if (!base) return [];
-  return series.filter(p => p.date >= startDate).map(p => ({x: p.date, y: p.value / base.value * 100}));
+
+const idx = (eq, start) => eq.map(e => ({x: e.date, y: e.value / start * 100}));
+const dd = (eq, start) => { let pk = start; return eq.map(e => { pk = Math.max(pk, e.value); return {x: e.date, y: (e.value / pk - 1) * 100}; }); };
+const versionMarks = b => (b.history || []).filter(h => h.event === "updated").map(h => h.date);
+function benchSeries(d, racing) {
+  const st = racing.map(b => b.start).sort()[0];
+  return Object.entries(d.benchmarks || {}).map(([k, v]) => { const s = v.series || []; const before = s.filter(p => p.date < st); const base = before.length ? before[before.length - 1] : s[0];
+    return {name: REF[k] ? REF[k].nm : k, color: REF[k] ? REF[k].c : "#888", dash: true, pts: base ? s.filter(p => p.date >= st).map(p => ({x: p.date, y: p.value / base.value * 100})) : []}; }).filter(s => s.pts.length);
 }
-function drawdown(eq, start) {
-  let peak = start; return eq.map(e => { peak = Math.max(peak, e.value); return {x: e.date, y: (e.value / peak - 1) * 100}; });
+
+function dayBars(host, bots) {
+  const W = 1100, rowH = 34, H = bots.length * rowH + 10, m = {l: 170, r: 80};
+  const mx = Math.max(0.1, ...bots.map(b => Math.abs(b.st.day)));
+  const X = v => m.l + (v + mx) / (2 * mx) * (W - m.l - m.r);
+  const svg = S("svg", {viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": "Today's move per bot: " + bots.map(b => `${b.name} ${pct(b.st.day)}`).join(", ")});
+  svg.append(S("line", {x1: X(0), x2: X(0), y1: 0, y2: H, stroke: "#3a4a6e"}));
+  bots.forEach((b, i) => { const y = 6 + i * rowH; const v = b.st.day; const x0 = X(0), x1 = X(v);
+    const t = S("text", {x: m.l - 10, y: y + 18, "text-anchor": "end", fill: "#c3cbe0", "font-size": 13, "font-family": "Inter, system-ui, sans-serif"}); t.textContent = b.emoji + " " + b.name; svg.append(t);
+    svg.append(S("rect", {x: Math.min(x0, x1), y: y + 4, width: Math.max(2, Math.abs(x1 - x0)), height: 20, rx: 4, fill: v >= 0 ? "#3ccf8e" : "#ff6b6b"}));
+    const l = S("text", {x: v >= 0 ? x1 + 8 : x1 - 8, y: y + 18, "text-anchor": v >= 0 ? "start" : "end", fill: "#e9edf6", "font-size": 12, "font-family": "JetBrains Mono, monospace"}); l.textContent = pct(v); svg.append(l); });
+  const box = $("div", "chartbox"); box.append(svg); host.append(box);
 }
 
 function lineChart(host, series, opt) {
-  const W = 1100, H = opt.height || 340, m = {l: 48, r: 118, t: 10, b: 26};
+  const W = 1100, H = opt.height || 340, m = {l: 48, r: 120, t: 10, b: 26};
   const legend = $("div", "legend");
-  series.forEach(s => { const sp = $("span"); const k = S("svg", {width: 18, height: 6});
-    k.append(S("line", {x1: 0, x2: 18, y1: 3, y2: 3, stroke: s.color, "stroke-width": 2, "stroke-dasharray": s.dash ? "4 3" : ""}));
-    sp.append(k, document.createTextNode(s.name)); legend.append(sp); });
+  series.forEach(s => { const sp = $("span"); const k = S("svg", {width: 18, height: 6}); k.append(S("line", {x1: 0, x2: 18, y1: 3, y2: 3, stroke: s.color, "stroke-width": 2, "stroke-dasharray": s.dash ? "4 3" : ""})); sp.append(k, document.createTextNode(s.name)); legend.append(sp); });
   host.append(legend);
   const xs = [...new Set(series.flatMap(s => s.pts.map(p => p.x)))].sort();
-  if (xs.length < 1) { host.append($("div", "empty", "Not enough data yet.")); return; }
+  if (xs.length < 2) { host.append($("div", "empty", "The replay fills in after the second day of racing.")); return; }
   const ys = series.flatMap(s => s.pts.map(p => p.y)).concat([opt.base]);
   let lo = Math.min(...ys), hi = Math.max(...ys); const pad = (hi - lo) * .08 || 1; lo -= pad; hi += pad;
-  const X = i => m.l + (xs.length === 1 ? 0 : i / (xs.length - 1)) * (W - m.l - m.r);
-  const Y = v => m.t + (hi - v) / (hi - lo) * (H - m.t - m.b);
+  const X = i => m.l + i / (xs.length - 1) * (W - m.l - m.r), Y = v => m.t + (hi - v) / (hi - lo) * (H - m.t - m.b);
   const xi = Object.fromEntries(xs.map((x, i) => [x, i]));
-  const svg = S("svg", {viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": host.querySelector("h2")?.textContent || "chart"});
-  // grid + y ticks
+  const svg = S("svg", {viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": "Race replay chart"});
   const step = niceStep((hi - lo) / 5);
-  for (let v = Math.ceil(lo / step) * step; v <= hi; v += step) {
-    svg.append(S("line", {x1: m.l, x2: W - m.r, y1: Y(v), y2: Y(v), stroke: "#1b2742", "stroke-width": 1}));
-    const t = S("text", {x: m.l - 8, y: Y(v) + 4, "text-anchor": "end", fill: "#8ea0c2", "font-size": 11, "font-family": "JetBrains Mono, ui-monospace, monospace"}); t.textContent = opt.fmt(v); svg.append(t);
-  }
-  svg.append(S("line", {x1: m.l, x2: W - m.r, y1: Y(opt.base), y2: Y(opt.base), stroke: "#3a4a6e", "stroke-width": 1}));
-  // x labels: first, middle, last
-  [0, Math.floor((xs.length - 1) / 2), xs.length - 1].filter((v, i, a) => a.indexOf(v) === i).forEach(i => {
-    const t = S("text", {x: X(i), y: H - 6, "text-anchor": i === 0 ? "start" : i === xs.length - 1 ? "end" : "middle", fill: "#8ea0c2", "font-size": 11, "font-family": "JetBrains Mono, ui-monospace, monospace"});
-    t.textContent = xs[i]; svg.append(t);
-  });
-  // lines (benchmarks first so bots draw on top)
+  for (let v = Math.ceil(lo / step) * step; v <= hi; v += step) { svg.append(S("line", {x1: m.l, x2: W - m.r, y1: Y(v), y2: Y(v), stroke: "#1b2742"}));
+    const t = S("text", {x: m.l - 8, y: Y(v) + 4, "text-anchor": "end", fill: "#8ea0c2", "font-size": 11, "font-family": "JetBrains Mono, monospace"}); t.textContent = opt.fmt(v); svg.append(t); }
+  svg.append(S("line", {x1: m.l, x2: W - m.r, y1: Y(opt.base), y2: Y(opt.base), stroke: "#3a4a6e"}));
+  [0, Math.floor((xs.length - 1) / 2), xs.length - 1].filter((v, i, a) => a.indexOf(v) === i).forEach(i => { const t = S("text", {x: X(i), y: H - 6, "text-anchor": i === 0 ? "start" : i === xs.length - 1 ? "end" : "middle", fill: "#8ea0c2", "font-size": 11, "font-family": "JetBrains Mono, monospace"}); t.textContent = xs[i]; svg.append(t); });
   const ends = [];
-  [...series].sort((a, b) => (b.dash ? 1 : 0) - (a.dash ? 1 : 0)).forEach(s => {
-    if (!s.pts.length) return;
-    const dpath = s.pts.map((p, i) => (i ? "L" : "M") + X(xi[p.x]).toFixed(1) + "," + Y(p.y).toFixed(1)).join("");
-    svg.append(S("path", {d: dpath, fill: "none", stroke: s.color, "stroke-width": 2, "stroke-linejoin": "round", "stroke-linecap": "round", "stroke-dasharray": s.dash ? "5 4" : ""}));
-    const last = s.pts[s.pts.length - 1];
-    if (!s.dash) svg.append(S("circle", {cx: X(xi[last.x]), cy: Y(last.y), r: 4, fill: s.color, stroke: "#111b2e", "stroke-width": 2}));
-    ends.push({s, y: Y(last.y), v: last.y});
-  });
-  // direct end labels, de-collided
-  ends.sort((a, b) => a.y - b.y); let prev = -1e9;
-  ends.forEach(e => { e.ly = Math.max(e.y, prev + 14); prev = e.ly; });
-  ends.forEach(e => { const t = S("text", {x: W - m.r + 8, y: e.ly + 4, fill: "#c3cbe0", "font-size": 11, "font-family": "Inter, system-ui, sans-serif"});
-    t.textContent = `${e.s.name.length > 13 ? e.s.name.slice(0, 12) + "…" : e.s.name} ${opt.fmt(e.v)}`; svg.append(t); });
-  // crosshair
-  const hair = S("line", {y1: m.t, y2: H - m.b, stroke: "#8ea0c2", "stroke-width": 1, opacity: 0});
-  svg.append(hair);
-  const hit = S("rect", {x: m.l, y: 0, width: W - m.l - m.r, height: H, fill: "transparent", tabindex: 0});
-  svg.append(hit);
+  [...series].sort((a, b) => (b.dash ? 1 : 0) - (a.dash ? 1 : 0)).forEach(s => { if (!s.pts.length) return;
+    svg.append(S("path", {d: s.pts.map((p, i) => (i ? "L" : "M") + X(xi[p.x]).toFixed(1) + "," + Y(p.y).toFixed(1)).join(""), fill: "none", stroke: s.color, "stroke-width": 2, "stroke-linejoin": "round", "stroke-dasharray": s.dash ? "5 4" : ""}));
+    (s.marks || []).forEach(md => { const p = s.pts.find(q => q.x >= md); if (p) svg.append(S("circle", {cx: X(xi[p.x]), cy: Y(p.y), r: 5, fill: "#111b2e", stroke: s.color, "stroke-width": 2})); });
+    const last = s.pts[s.pts.length - 1]; if (!s.dash) svg.append(S("circle", {cx: X(xi[last.x]), cy: Y(last.y), r: 4, fill: s.color, stroke: "#111b2e", "stroke-width": 2}));
+    ends.push({s, y: Y(last.y), v: last.y}); });
+  ends.sort((a, b) => a.y - b.y); let prev = -1e9; ends.forEach(e => { e.ly = Math.max(e.y, prev + 14); prev = e.ly; });
+  ends.forEach(e => { const t = S("text", {x: W - m.r + 8, y: e.ly + 4, fill: "#c3cbe0", "font-size": 11, "font-family": "Inter, system-ui, sans-serif"}); t.textContent = `${e.s.name.length > 13 ? e.s.name.slice(0, 12) + "…" : e.s.name} ${opt.fmt(e.v)}`; svg.append(t); });
+  const hair = S("line", {y1: m.t, y2: H - m.b, stroke: "#8ea0c2", opacity: 0}); svg.append(hair);
+  const hit = S("rect", {x: m.l, y: 0, width: W - m.l - m.r, height: H, fill: "transparent", tabindex: 0}); svg.append(hit);
   const box = $("div", "chartbox"); box.append(svg); host.append(box);
   const tip = document.getElementById("tip");
-  const show = i => {
-    hair.setAttribute("x1", X(i)); hair.setAttribute("x2", X(i)); hair.setAttribute("opacity", .6);
-    tip.replaceChildren($("div", "d", xs[i]));
-    series.map(s => ({s, p: s.pts.find(p => p.x === xs[i])})).filter(r => r.p).sort((a, b) => b.p.y - a.p.y).forEach(({s, p}) => {
-      const row = $("div", "row"); const lab = $("span"); const k = S("svg", {width: 12, height: 4});
-      k.append(S("line", {x1: 0, x2: 12, y1: 2, y2: 2, stroke: s.color, "stroke-width": 2, "stroke-dasharray": s.dash ? "3 2" : ""}));
-      lab.append(k, document.createTextNode(s.name)); row.append($("b", null, opt.fmt(p.y)), lab); tip.append(row);
-    });
-    tip.style.display = "block";
-    const r = svg.getBoundingClientRect(); const px = r.left + X(i) / W * r.width + window.scrollX;
-    tip.style.left = Math.min(px + 14, window.scrollX + innerWidth - 220) + "px"; tip.style.top = (r.top + window.scrollY + 20) + "px";
-  };
+  const show = i => { hair.setAttribute("x1", X(i)); hair.setAttribute("x2", X(i)); hair.setAttribute("opacity", .6); tip.replaceChildren($("div", "d", xs[i]));
+    series.map(s => ({s, p: s.pts.find(p => p.x === xs[i])})).filter(r => r.p).sort((a, b) => b.p.y - a.p.y).forEach(({s, p}) => { const row = $("div", "row"); const lab = $("span"); const k = S("svg", {width: 12, height: 4}); k.append(S("line", {x1: 0, x2: 12, y1: 2, y2: 2, stroke: s.color, "stroke-width": 2})); lab.append(k, document.createTextNode(s.name)); row.append($("b", null, opt.fmt(p.y)), lab); tip.append(row); });
+    tip.style.display = "block"; const r = svg.getBoundingClientRect(); const px = r.left + X(i) / W * r.width + window.scrollX;
+    tip.style.left = Math.min(px + 14, window.scrollX + innerWidth - 230) + "px"; tip.style.top = (r.top + window.scrollY + 20) + "px"; };
   let cur = xs.length - 1;
-  hit.addEventListener("pointermove", ev => { const r = svg.getBoundingClientRect(); const x = (ev.clientX - r.left) / r.width * W;
-    cur = Math.max(0, Math.min(xs.length - 1, Math.round((x - m.l) / (W - m.l - m.r) * (xs.length - 1)))); show(cur); });
-  hit.addEventListener("pointerleave", () => { tip.style.display = "none"; hair.setAttribute("opacity", 0); });
-  hit.addEventListener("focus", () => show(cur));
-  hit.addEventListener("blur", () => { tip.style.display = "none"; hair.setAttribute("opacity", 0); });
+  hit.addEventListener("pointermove", ev => { const r = svg.getBoundingClientRect(); const x = (ev.clientX - r.left) / r.width * W; cur = Math.max(0, Math.min(xs.length - 1, Math.round((x - m.l) / (W - m.l - m.r) * (xs.length - 1)))); show(cur); });
+  const hide = () => { tip.style.display = "none"; hair.setAttribute("opacity", 0); };
+  hit.addEventListener("pointerleave", hide); hit.addEventListener("blur", hide); hit.addEventListener("focus", () => show(cur));
   hit.addEventListener("keydown", ev => { if (ev.key === "ArrowLeft") cur = Math.max(0, cur - 1); else if (ev.key === "ArrowRight") cur = Math.min(xs.length - 1, cur + 1); else return; ev.preventDefault(); show(cur); });
 }
 function niceStep(x) { const p = Math.pow(10, Math.floor(Math.log10(x))); const f = x / p; return (f < 1.5 ? 1 : f < 3 ? 2 : f < 7 ? 5 : 10) * p; }
 
 function footer(d) {
-  const f = document.getElementById("foot"); const c = d.costs || {};
-  f.replaceChildren();
-  [`Rules for every bot: long only, whole shares, no leverage. Orders are decided after the close and filled at the next session's open with ${c.slippage_bps ?? 5} bps slippage. Costs: ${c.commission_pct ?? 0.08}% commission (min 1 USD on US stocks, 10 DKK on Danish stocks) and ${c.fx_fee_pct ?? 0.25}% FX on USD trades. Daily-loss kill switch at −10%. Pre-tax.`,
-   "Fake money only. This page shows results, holdings and trades; the bots' strategies and code are private. Nothing here is investment advice."]
-   .forEach(t => f.append($("div", null, t)));
+  const f = document.getElementById("foot"); f.replaceChildren();
+  ["🏁 Fake money only: every bot starts with 20,000 DKK, trades real US and Danish stocks at real prices, and pays Saxo-like costs (0.08% commission, 0.25% currency fee).",
+   "Holdings and trades are public; the bots' recipes and code stay private. Nothing here is investment advice."].forEach(t => f.append($("div", null, t)));
+  const a = $("a", null, "How does this work? →"); a.href = "about.html"; f.append(a);
 }
 </script>
 </body>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How it works · Enlighten Racing</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏁</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:dark;--bg:#0a1120;--panel:#111b2e;--panel2:#172441;--line:#253355;--text:#e9edf6;--muted:#8ea0c2;--faint:#5d6d8f;--gold:#f5c542;--r:14px;
+  --display:"Bungee","Space Grotesk",system-ui,sans-serif;--head:"Space Grotesk",system-ui,sans-serif;--body:"Inter",system-ui,sans-serif}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 var(--body)}
+body{background:radial-gradient(1200px 500px at 30% -10%,#1b2b52 0,transparent 60%),var(--bg)}
+a{color:#7fb2ff}
+.wrap{max-width:900px;margin:0 auto;padding:18px 18px 60px}
+nav{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:26px}
+.brand{font:400 22px var(--display);display:flex;align-items:center;gap:10px}
+.flag{width:28px;height:20px;border-radius:3px;background:conic-gradient(#fff 25%,#111 0 50%,#fff 0 75%,#111 0) 0 0/10px 10px}
+.links{display:flex;gap:6px}
+.links a{color:var(--muted);text-decoration:none;font:600 13px var(--head);padding:7px 12px;border-radius:99px;border:1px solid var(--line)}
+.links a[aria-current=page]{color:var(--text);background:var(--panel2)}
+h1{font:400 36px/1.15 var(--display);margin:0 0 12px;color:var(--gold)}
+.lead{font-size:19px;color:#c9d3e6;margin:0 0 28px}
+h2{font:700 23px var(--head);margin:34px 0 10px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;margin:14px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:16px;position:relative;overflow:hidden}
+.card .bar{position:absolute;left:0;right:0;top:0;height:4px}
+.card .em{font-size:36px}
+.card h3{font:700 17px var(--head);margin:4px 0 4px}
+.card p{margin:0;color:#c9d3e6;font-size:14px}
+.card .kind{font:600 11px var(--head);text-transform:uppercase;letter-spacing:.7px;color:var(--muted);margin-top:8px}
+.timeline{list-style:none;margin:0;padding:0;position:relative}
+.timeline:before{content:"";position:absolute;left:21px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.timeline li{position:relative;padding:0 0 18px 58px}
+.timeline .dot{position:absolute;left:0;top:0;width:44px;height:44px;border-radius:50%;background:var(--panel2);border:1px solid var(--line);display:grid;place-items:center;font-size:20px}
+.timeline b{font-family:var(--head)}
+.timeline .t{font:600 12px var(--head);color:var(--gold);letter-spacing:.5px}
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.rule{background:var(--panel2);border-radius:12px;padding:12px 14px;font-size:14px}
+.rule b{display:block;font:700 15px var(--head);margin-bottom:2px}
+details{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin:8px 0}
+summary{cursor:pointer;font:600 15px var(--head)}
+details p{margin:8px 0 0;color:#c9d3e6;font-size:15px}
+.mz{background:linear-gradient(135deg,#1b1540,#111b2e 60%);border-color:#4b3fa0}
+.cta{display:inline-block;margin-top:24px;font:700 15px var(--head);background:var(--gold);color:#1a1300;padding:10px 18px;border-radius:99px;text-decoration:none}
+footer{color:var(--faint);font-size:13px;margin-top:36px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <div class="brand"><span class="flag" aria-hidden="true"></span>ENLIGHTEN RACING</div>
+    <div class="links"><a href="index.html">🏁 The race</a><a href="about.html" aria-current="page">❓ How it works</a></div>
+  </nav>
+
+  <h1>A grand prix for trading bots</h1>
+  <p class="lead">A handful of robot traders each get <b>20,000 Danish kroner of pretend money</b> and race each other on the real stock market. Same track, same rules, real prices. Fake money, so nobody gets hurt. The aim is to find out which way of investing actually works, and maybe one day use the winner with real money.</p>
+
+  <h2>🧑‍✈️ Meet the drivers</h2>
+  <p>Every driver has its own personality and its own secret recipe. They can't see each other's recipes, so nobody can copy the leader.</p>
+  <div class="grid" id="drivers"></div>
+
+  <div class="panel mz">
+    <h2 style="margin-top:0">🤖 And then there's MEGA ZORD</h2>
+    <p style="margin:0">Mega Zord is the coach. It doesn't drive. Instead it watches everything: every trade, every win and every crash of every driver. When it spots something worth trying, it <b>builds new drivers of its own</b> ("Team MZ"), tunes them, and benches the ones that don't work. It may build as many as it likes, but it can never touch the original five. Will the coach's inventions beat the originals? That's half the fun.</p>
+  </div>
+
+  <h2>⏱️ A day at the track</h2>
+  <ol class="timeline">
+    <li><span class="dot">🔔</span><span class="t">09:00 – 17:00 COPENHAGEN · 15:30 – 22:00 NEW YORK</span><br><b>The markets are open.</b> Last night's orders are filled at the opening prices.</li>
+    <li><span class="dot">📦</span><span class="t">AROUND 17:30, EVERY WEEKDAY</span><br><b>The pit crew collects the numbers:</b> closing prices, company results and news headlines for about 200 US and Danish stocks and funds.</li>
+    <li><span class="dot">🧠</span><span class="t">RIGHT AFTER</span><br><b>Each driver decides alone</b>, in its own closed garage, what to buy or sell. Some follow fixed rules, others are AI drivers that read the news like a human analyst would.</li>
+    <li><span class="dot">🤖</span><span class="t">THEN</span><br><b>Mega Zord reviews the whole field</b> and may build or tune a bot on Team MZ.</li>
+    <li><span class="dot">🏁</span><span class="t">A FEW MINUTES LATER</span><br><b>The scoreboard updates.</b> The orders wait until the next morning's opening bell, so no driver can ever "peek" at prices it shouldn't know yet.</li>
+  </ol>
+  <p style="color:var(--muted);font-size:14px">Because New York is still trading at 17:30 Copenhagen time, the evening update covers up to the <i>previous</i> day's US close. A trade decided on Monday evening happens on Tuesday morning and shows up in Wednesday evening's update.</p>
+
+  <h2>📜 The rules of the race</h2>
+  <div class="rules">
+    <div class="rule"><b>💰 Same start</b>Every driver begins with 20,000 DKK, including Team MZ drivers that join later.</div>
+    <div class="rule"><b>🌍 Same track</b>Stocks and funds listed in the US and in Denmark.</div>
+    <div class="rule"><b>🧾 Real costs</b>Every trade pays what a Saxo Bank customer would pay: a small commission plus a currency fee on US trades.</div>
+    <div class="rule"><b>🚫 No tricks</b>No borrowing money, no betting on falling prices, whole shares only, and no peeking at tomorrow.</div>
+    <div class="rule"><b>🎛️ Free driving</b>The race sets no other limits. A driver trades as much or as little as its own recipe says.</div>
+    <div class="rule"><b>🔒 Secret recipes</b>Holdings and trades are public on the scoreboard. How each driver decides stays private.</div>
+  </div>
+
+  <h2>🏆 How do we know who's really winning?</h2>
+  <p>Being first on a lucky week is easy. So the scoreboard also shows:</p>
+  <ul>
+    <li><b>vs the S&P 500 and vs C25</b>: did the driver beat simply buying the whole American or Danish market? If not, it isn't worth much.</li>
+    <li><b>Max drawdown</b>: the deepest dip from a peak. A driver that wins big but crashes hard is a scary ride.</li>
+    <li><b>Sharpe</b>: return per unit of bumpiness. Higher is smoother.</li>
+  </ul>
+  <p>Drivers that join later are compared with the market over their own dates, so a late start isn't a handicap.</p>
+
+  <h2>🎯 What's the point?</h2>
+  <p>To find an investing approach that holds up in the real world. A driver can "graduate" to a small real-money test only after a long, honest track record: <b>at least three months of racing</b> (six for AI drivers), <b>beating the market after costs</b>, and <b>no crash deeper than 15%</b>. Even then, a person approves every real trade.</p>
+
+  <h2>🤔 Questions</h2>
+  <details><summary>Is this real money?</summary><p>No. The money is pretend; the prices are real. Nothing on this site is investment advice.</p></details>
+  <details><summary>Why can't the drivers see each other?</summary><p>So each recipe is tested on its own merits. If they could peek, they'd copy the leader and we'd learn nothing. Only the coach, Mega Zord, sees everything, and that's exactly its job.</p></details>
+  <details><summary>Who are the AI drivers?</summary><p>They're AI models given a written strategy and today's market data. Each one writes down its decisions and reasons privately, every day, in its own garage.</p></details>
+  <details><summary>What happens when a driver crashes?</summary><p>It keeps racing with whatever money it has left. Its record stays on the board; that's what makes the comparison honest. Mega Zord can bench its own drivers, but the originals race to the end.</p></details>
+
+  <a class="cta" href="index.html">🏁 Watch the race</a>
+  <footer>Enlighten Racing · fake money, real prices · made for learning and fun.</footer>
+</div>
+<script>
+"use strict";
+const ABOUT = {
+  saxoman: "A careful strategist inspired by Levi's Saxo trading engine. It values each company with bull, base and bear scenarios, sizes bets by how good the odds look, and walks away when the risk isn't worth it.",
+  bruno: "Thinks like Bruno: reads the news, checks every holding, hunts for under-the-radar gems and picks the plan that fits best each day.",
+  trend_rider: "Rides the market's strongest winners while they keep winning, and heads for safety when the whole market turns down.",
+  globetrotter: "Travels between world markets (US, Europe, Japan, emerging countries), bonds and gold, following whichever is going strongest. Trades rarely.",
+  catalyst: "Waits for companies that crush their earnings, then jumps aboard the move that often follows. An AI teammate double-checks each pick."
+};
+const $ = (t, c, x) => { const e = document.createElement(t); if (c) e.className = c; if (x != null) e.textContent = x; return e; };
+function draw(bots) {
+  const g = document.getElementById("drivers"); g.replaceChildren();
+  bots.filter(b => b.status !== "retired").forEach(b => { const c = $("div", "card"); const bar = $("div", "bar"); bar.style.background = b.color || "#3987e5"; c.append(bar);
+    c.append($("div", "em", b.emoji || "🤖"), $("h3", null, b.name), $("p", null, ABOUT[b.id] || b.tagline || b.style || "Built by Mega Zord."),
+      $("div", "kind", (b.owner === "megazord" ? "Team MZ · " : "") + (b.kind === "AI agent" ? "AI driver" : b.kind === "rules" ? "Rule-based driver" : "Rules + AI check"))); g.append(c); });
+}
+fetch("data/race.json", {cache: "no-store"}).then(r => r.json()).then(d => draw(d.bots)).catch(() => draw(Object.keys(ABOUT).map(id => ({id, name: id.toUpperCase().replace("_", " ")}))));
+</script>
+</body>
+</html>

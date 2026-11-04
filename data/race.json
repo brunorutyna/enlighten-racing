@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-04T18:57:12+00:00",
+ "generated_at": "2026-11-04T19:51:41+00:00",
  "as_of": "2026-11-04",
  "start_cash_dkk": 20000.0,
  "costs": {
@@ -16,11 +16,22 @@
    "id": "saxoman",
    "name": "SAXOMAN",
    "style": "Saxoman port",
+   "tagline": "The Saxo strategist: valuation math, Kelly sizing, strict risk gates",
+   "emoji": "\ud83c\udfb7",
+   "owner": "original",
    "version": "v1",
-   "start": "2026-11-16",
+   "start": "2026-11-04",
    "retired": null,
    "color": "#d55181",
    "kind": "AI agent",
+   "history": [
+    {
+     "date": "2026-11-04",
+     "version": "v1",
+     "event": "start",
+     "note": ""
+    }
+   ],
    "status": "waiting",
    "summary": null,
    "equity": [],
@@ -32,11 +43,22 @@
    "id": "bruno",
    "name": "BRUNO",
    "style": "Daily analyst",
+   "tagline": "Reads the market like Bruno does every day",
+   "emoji": "\ud83e\udde0",
+   "owner": "original",
    "version": "v1",
-   "start": "2026-11-16",
+   "start": "2026-11-04",
    "retired": null,
    "color": "#3987e5",
    "kind": "AI agent",
+   "history": [
+    {
+     "date": "2026-11-04",
+     "version": "v1",
+     "event": "start",
+     "note": ""
+    }
+   ],
    "status": "waiting",
    "summary": null,
    "equity": [],
@@ -48,11 +70,22 @@
    "id": "trend_rider",
    "name": "TREND RIDER",
    "style": "Momentum",
+   "tagline": "Surfs the strongest stock trends",
+   "emoji": "\ud83c\udfc4",
+   "owner": "original",
    "version": "v1",
-   "start": "2026-11-16",
+   "start": "2026-11-04",
    "retired": null,
    "color": "#d95926",
    "kind": "rules",
+   "history": [
+    {
+     "date": "2026-11-04",
+     "version": "v1",
+     "event": "start",
+     "note": ""
+    }
+   ],
    "status": "waiting",
    "summary": null,
    "equity": [],
@@ -61,14 +94,25 @@
    "notes": []
   },
   {
-   "id": "rubber_band",
-   "name": "RUBBER BAND",
-   "style": "Mean reversion",
+   "id": "globetrotter",
+   "name": "GLOBETROTTER",
+   "style": "Asset-class rotation",
+   "tagline": "Hops between world markets, bonds and gold",
+   "emoji": "\ud83c\udf0d",
+   "owner": "original",
    "version": "v1",
-   "start": "2026-11-16",
+   "start": "2026-11-04",
    "retired": null,
    "color": "#199e70",
    "kind": "rules",
+   "history": [
+    {
+     "date": "2026-11-04",
+     "version": "v1",
+     "event": "start",
+     "note": ""
+    }
+   ],
    "status": "waiting",
    "summary": null,
    "equity": [],
@@ -80,11 +124,22 @@
    "id": "catalyst",
    "name": "CATALYST",
    "style": "Earnings drift",
+   "tagline": "Pounces after blow-out earnings",
+   "emoji": "\u26a1",
+   "owner": "original",
    "version": "v1",
-   "start": "2026-11-16",
+   "start": "2026-11-04",
    "retired": null,
    "color": "#c98500",
    "kind": "rules + AI check",
+   "history": [
+    {
+     "date": "2026-11-04",
+     "version": "v1",
+     "event": "start",
+     "note": ""
+    }
+   ],
    "status": "waiting",
    "summary": null,
    "equity": [],
@@ -93,5 +148,8 @@
    "notes": []
   }
  ],
- "benchmarks": {}
+ "benchmarks": {},
+ "megazord": {
+  "log": []
+ }
 }
