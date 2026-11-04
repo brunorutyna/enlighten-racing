@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-04T20:24:37+00:00",
+ "generated_at": "2026-11-04T20:25:32+00:00",
  "as_of": "2026-11-03",
  "start_cash_dkk": 20000.0,
  "costs": {
@@ -58,6 +58,7 @@
      "text": "Saxoman stays 100% in cash on day one: no candidate passed its valuation and Kelly gates."
     }
    ],
+   "pending_orders": 0,
    "status": "racing"
   },
   {
@@ -106,6 +107,7 @@
      "text": "Bought Novo Nordisk, Danske Bank, Vestas and NKT."
     }
    ],
+   "pending_orders": 4,
    "status": "racing"
   },
   {
@@ -241,6 +243,7 @@
     }
    ],
    "notes": [],
+   "pending_orders": 0,
    "status": "racing"
   },
   {
@@ -322,6 +325,7 @@
     }
    ],
    "notes": [],
+   "pending_orders": 0,
    "status": "racing"
   },
   {
@@ -365,6 +369,7 @@
    "holdings": [],
    "trades": [],
    "notes": [],
+   "pending_orders": 0,
    "status": "racing"
   }
  ],

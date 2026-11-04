@@ -160,13 +160,14 @@ function stats(b, start) {
   const prev = eq.length > 1 ? eq[eq.length - 2].value : start;
   let streak = 0;
   for (let i = eq.length - 1; i > 0; i--) { const up = eq[i].value > eq[i - 1].value; if (i === eq.length - 1) streak = up ? 1 : -1; else if ((streak > 0) === up) streak += up ? 1 : -1; else break; }
-  const today = (b.trades || []).filter(t => eq.length && t.date === eq[eq.length - 1].date).length;
+  const today = (b.trades || []).filter(t => t.date === (window.LAST_TRADE_DAY || "")).length;
   return {ret: (last / start - 1) * 100, day: (last / prev - 1) * 100, streak, today, days: eq.length};
 }
 
 function render(d) {
   const app = document.getElementById("app"); app.replaceChildren();
   const start = d.start_cash_dkk || 20000;
+  window.LAST_TRADE_DAY = d.bots.flatMap(b => (b.trades || []).map(t => t.date)).sort().pop() || "";
   d.bots.forEach(b => { b.st = stats(b, start); b.emoji = b.emoji || "🤖"; });
   const racing = d.bots.filter(b => b.equity && b.equity.length && b.status !== "retired");
   const ranked = [...racing].sort((a, b) => b.st.ret - a.st.ret);
@@ -186,8 +187,10 @@ function render(d) {
   const left = $("section", "panel");
   left.append($("div", "daytag", `DAY ${dayN} OF THE RACE`));
   const L = ranked[0], R2 = ranked[1];
+  const flat = racing.every(b => Math.abs(b.st.ret) < 1e-9);
   const h = $("div", "headline"); const who = $("span", "who"); who.append(document.createTextNode(L.emoji + " " + L.name));
-  h.append(who, document.createTextNode(L.st.ret >= 0 ? ` leads at ${pct(L.st.ret)}` : ` leads… at ${pct(L.st.ret)} (tough track!)`));
+  if (flat) h.append(document.createTextNode("🚦 Lights out! The race is on"));
+  else h.append(who, document.createTextNode(L.st.ret >= 0 ? ` leads at ${pct(L.st.ret)}` : ` leads… at ${pct(L.st.ret)} (tough track!)`));
   left.append(h);
   const ul = $("ul", "commentary");
   commentary(d, ranked, start).forEach(t => ul.append($("li", null, t)));
@@ -199,10 +202,19 @@ function render(d) {
   const busy = [...racing].sort((a, b) => b.st.today - a.st.today)[0];
   const hot = [...racing].sort((a, b) => b.st.streak - a.st.streak)[0];
   const safe = [...racing].sort((a, b) => (b.summary.max_dd_pct ?? -99) - (a.summary.max_dd_pct ?? -99))[0];
-  [["🚀 Fastest lap", byDay[0], pct(byDay[0].st.day) + " today"],
+  const bigBet = racing.map(b => ({b, t: (b.trades || []).filter(t => t.side === "buy").sort((x, y) => y.dkk - x.dkk)[0]})).filter(x => x.t).sort((x, y) => y.t.dkk - x.t.dkk)[0];
+  const cashKing = [...racing].sort((a, b) => (b.cash_dkk ?? 0) - (a.cash_dkk ?? 0))[0];
+  const queued = [...racing].sort((a, b) => (b.pending_orders ?? 0) - (a.pending_orders ?? 0))[0];
+  const list = flat ? [
+   ["🔧 Busiest pit crew", busy, busy.st.today ? busy.st.today + " trades on " + window.LAST_TRADE_DAY : "no trades yet"],
+   ["💥 Biggest bet", bigBet ? bigBet.b : busy, bigBet ? `${bigBet.t.qty} ${bigBet.t.symbol} · ${dkk(bigBet.t.dkk)}` : "none yet"],
+   ["🧘 Most patient", cashKing, dkk(cashKing.cash_dkk) + " still in cash"],
+   ["⏳ Waiting at the start line", queued, (queued.pending_orders ? queued.pending_orders + " orders queued for the next open" : "nothing queued")]
+  ] : [["🚀 Fastest lap", byDay[0], pct(byDay[0].st.day) + " today"],
    ["🛞 Flat tyre", byDay[byDay.length - 1], pct(byDay[byDay.length - 1].st.day) + " today"],
-   ["🔧 Busiest pit crew", busy, busy.st.today ? busy.st.today + " trades" : "quiet day: no trades"],
-   [hot.st.streak > 1 ? "🔥 Hot streak" : "🛡️ Smoothest ride", hot.st.streak > 1 ? hot : safe, hot.st.streak > 1 ? hot.st.streak + " up days in a row" : "max drawdown " + (safe.summary.max_dd_pct ?? 0).toFixed(1) + "%"]]
+   ["🔧 Busiest pit crew", busy, busy.st.today ? busy.st.today + " trades on " + window.LAST_TRADE_DAY : "quiet day: no trades"],
+   [hot.st.streak > 1 ? "🔥 Hot streak" : "🛡️ Smoothest ride", hot.st.streak > 1 ? hot : safe, hot.st.streak > 1 ? hot.st.streak + " up days in a row" : "max drawdown " + (safe.summary.max_dd_pct ?? 0).toFixed(1) + "%"]];
+  list
    .forEach(([k, b, s]) => { const a = $("div", "award"); a.append($("div", "k", k)); const v = $("div", "v"); v.append(document.createTextNode(b.emoji + " " + b.name)); a.append(v, $("div", "s", s)); aw.append(a); });
   right.append(aw);
   hero.append(left, right); app.append(hero);
@@ -256,6 +268,14 @@ function render(d) {
 
 function commentary(d, ranked, start) {
   const out = [];
+  if (ranked.every(b => Math.abs(b.st.ret) < 1e-9)) {
+    const n = ranked.reduce((a, b) => a + b.st.today, 0);
+    out.push(`🏁 Everyone started from ${dkk(start)}. ${n} trades filled live on ${window.LAST_TRADE_DAY || "day 1"}.`);
+    const q = ranked.filter(b => b.pending_orders); if (q.length) out.push(`⏳ ${q.map(b => b.name).join(", ")} ${q.length > 1 ? "have" : "has"} orders waiting for the next market open.`);
+    const idle = ranked.filter(b => !(b.trades || []).length && !b.pending_orders); if (idle.length) out.push(`🧘 ${idle.map(b => b.name).join(", ")} ${idle.length > 1 ? "are" : "is"} sitting in cash: nothing passed ${idle.length > 1 ? "their" : "its"} rules yet.`);
+    out.push("📈 Scores start moving after the first close is valued in the next daily update.");
+    return out;
+  }
   const spy = d.benchmarks && d.benchmarks.SPY ? d.benchmarks.SPY.series : null;
   if (ranked.length > 1) {
     const gap = ranked[0].st.ret - ranked[1].st.ret;
