@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-04T20:22:24+00:00",
+ "generated_at": "2026-11-04T20:24:37+00:00",
  "as_of": "2026-11-03",
  "start_cash_dkk": 20000.0,
  "costs": {
@@ -52,7 +52,12 @@
    "cash_dkk": 20000.0,
    "holdings": [],
    "trades": [],
-   "notes": [],
+   "notes": [
+    {
+     "date": "2026-11-03",
+     "text": "Saxoman stays 100% in cash on day one: no candidate passed its valuation and Kelly gates."
+    }
+   ],
    "status": "racing"
   },
   {
@@ -95,7 +100,12 @@
    "cash_dkk": 20000.0,
    "holdings": [],
    "trades": [],
-   "notes": [],
+   "notes": [
+    {
+     "date": "2026-11-03",
+     "text": "Bought Novo Nordisk, Danske Bank, Vestas and NKT."
+    }
+   ],
    "status": "racing"
   },
   {
@@ -259,7 +269,7 @@
     "max_dd_pct": 0.0,
     "sharpe": null,
     "days": 1,
-    "trades": 1,
+    "trades": 2,
     "win_rate_pct": null,
     "vs_spy_pp": null,
     "vs_c25_pp": null
@@ -270,8 +280,16 @@
      "value": 20000.0
     }
    ],
-   "cash_dkk": 10836.13,
+   "cash_dkk": 1615.36,
    "holdings": [
+    {
+     "symbol": "DBC",
+     "qty": 44,
+     "ccy": "USD",
+     "since": "2026-11-04",
+     "value_dkk": 9185.83,
+     "pnl_pct": -0.38
+    },
     {
      "symbol": "VNQ",
      "qty": 14,
@@ -291,6 +309,16 @@
      "ccy": "USD",
      "dkk": 9163.87,
      "time": "2026-11-04T20:21Z"
+    },
+    {
+     "date": "2026-11-04",
+     "symbol": "DBC",
+     "side": "buy",
+     "qty": 44,
+     "price": 31.2806,
+     "ccy": "USD",
+     "dkk": 9220.77,
+     "time": "2026-11-04T20:22Z"
     }
    ],
    "notes": [],
