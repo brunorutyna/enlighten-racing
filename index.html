@@ -272,7 +272,7 @@ function commentary(d, ranked, start) {
 
 function track(host, ranked, d, start) {
   const ghosts = Object.entries(d.benchmarks || {}).map(([k, v]) => { const s = v.series || []; const st = ranked.map(b => b.start).sort()[0];
-    const before = s.filter(p => p.date < st); const base = before.length ? before[before.length - 1].value : (s[0] || {}).value;
+    const before = s.filter(p => p.date <= st); const base = before.length ? before[before.length - 1].value : (s[0] || {}).value;
     const lastv = s.length ? s[s.length - 1].value : base; return {name: REF[k] ? REF[k].nm : k, emoji: REF[k] ? REF[k].em : "🏳️", ret: base ? (lastv / base - 1) * 100 : 0, color: REF[k] ? REF[k].c : "#888", ghost: true}; });
   const all = ranked.map(b => ({name: b.name, emoji: b.emoji, ret: b.st.ret, color: b.color})).concat(ghosts);
   const lo = Math.min(0, ...all.map(a => a.ret)), hi = Math.max(0.5, ...all.map(a => a.ret));
@@ -357,7 +357,7 @@ const dd = (eq, start) => { let pk = start; return eq.map(e => { pk = Math.max(p
 const versionMarks = b => (b.history || []).filter(h => h.event === "updated").map(h => h.date);
 function benchSeries(d, racing) {
   const st = racing.map(b => b.start).sort()[0];
-  return Object.entries(d.benchmarks || {}).map(([k, v]) => { const s = v.series || []; const before = s.filter(p => p.date < st); const base = before.length ? before[before.length - 1] : s[0];
+  return Object.entries(d.benchmarks || {}).map(([k, v]) => { const s = v.series || []; const before = s.filter(p => p.date <= st); const base = before.length ? before[before.length - 1] : s[0];
     return {name: REF[k] ? REF[k].nm : k, color: REF[k] ? REF[k].c : "#888", dash: true, pts: base ? s.filter(p => p.date >= st).map(p => ({x: p.date, y: p.value / base.value * 100})) : []}; }).filter(s => s.pts.length);
 }
 
