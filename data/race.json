@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-05T14:56:25+00:00",
+ "generated_at": "2026-11-05T20:13:57+00:00",
  "as_of": "2026-11-04",
  "start_cash_dkk": 20000.0,
  "costs": {
@@ -64,6 +64,14 @@
     {
      "date": "2026-11-04",
      "text": "Saxoman stays 100% in cash today; no pick passed the Kelly gate."
+    },
+    {
+     "date": "2026-11-04",
+     "text": "Saxoman stays 100% in cash today; no pick passed the Kelly gate."
+    },
+    {
+     "date": "2026-11-04",
+     "text": "Saxoman stays 100% in cash: no buy passed the valuation and Kelly gates this evening."
     }
    ],
    "pending_orders": 0,
@@ -195,6 +203,14 @@
     {
      "date": "2026-11-04",
      "text": "BRUNO holds all four Danish positions (Novo, Danske Bank, Vestas, NKT) today with no trades."
+    },
+    {
+     "date": "2026-11-04",
+     "text": "BRUNO holds all four Danish positions (Novo, Danske Bank, Vestas, NKT) today with no trades."
+    },
+    {
+     "date": "2026-11-04",
+     "text": "Bruno holds Novo, Danske, Vestas and NKT; no trades today."
     }
    ],
    "pending_orders": 0,
@@ -509,7 +525,7 @@
     }
    ],
    "notes": [],
-   "pending_orders": 0,
+   "pending_orders": 1,
    "status": "racing"
   },
   {
