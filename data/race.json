@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-11-04T20:26:51+00:00",
- "as_of": "2026-11-03",
+ "generated_at": "2026-11-05T14:56:25+00:00",
+ "as_of": "2026-11-04",
  "start_cash_dkk": 20000.0,
  "costs": {
   "commission_pct": 0.08,
@@ -37,15 +37,19 @@
     "return_pct": 0.0,
     "max_dd_pct": 0.0,
     "sharpe": null,
-    "days": 1,
+    "days": 2,
     "trades": 0,
     "win_rate_pct": null,
-    "vs_spy_pp": null,
-    "vs_c25_pp": null
+    "vs_spy_pp": -1.51,
+    "vs_c25_pp": -1.82
    },
    "equity": [
     {
      "date": "2026-11-03",
+     "value": 20000.0
+    },
+    {
+     "date": "2026-11-04",
      "value": 20000.0
     }
    ],
@@ -56,6 +60,10 @@
     {
      "date": "2026-11-03",
      "text": "Saxoman stays 100% in cash on day one: no candidate passed its valuation and Kelly gates."
+    },
+    {
+     "date": "2026-11-04",
+     "text": "Saxoman stays 100% in cash today; no pick passed the Kelly gate."
     }
    ],
    "pending_orders": 0,
@@ -86,28 +94,110 @@
     "return_pct": 0.0,
     "max_dd_pct": 0.0,
     "sharpe": null,
-    "days": 1,
-    "trades": 0,
+    "days": 2,
+    "trades": 4,
     "win_rate_pct": null,
-    "vs_spy_pp": null,
-    "vs_c25_pp": null
+    "vs_spy_pp": -1.51,
+    "vs_c25_pp": -1.82
    },
    "equity": [
     {
      "date": "2026-11-03",
      "value": 20000.0
+    },
+    {
+     "date": "2026-11-04",
+     "value": 20000.0
     }
    ],
-   "cash_dkk": 20000.0,
-   "holdings": [],
-   "trades": [],
+   "cash_dkk": 4006.18,
+   "holdings": [
+    {
+     "symbol": "NOVO-B.CO",
+     "qty": 21,
+     "ccy": "DKK",
+     "since": "2026-11-05",
+     "value_dkk": 5939.85,
+     "pnl_pct": -0.22
+    },
+    {
+     "symbol": "DANSKE.CO",
+     "qty": 10,
+     "ccy": "DKK",
+     "since": "2026-11-05",
+     "value_dkk": 3582.0,
+     "pnl_pct": -0.33
+    },
+    {
+     "symbol": "NKT.CO",
+     "qty": 4,
+     "ccy": "DKK",
+     "since": "2026-11-05",
+     "value_dkk": 3340.0,
+     "pnl_pct": -0.35
+    },
+    {
+     "symbol": "VWS.CO",
+     "qty": 15,
+     "ccy": "DKK",
+     "since": "2026-11-05",
+     "value_dkk": 3084.0,
+     "pnl_pct": -0.37
+    }
+   ],
+   "trades": [
+    {
+     "date": "2026-11-05",
+     "symbol": "NOVO-B.CO",
+     "side": "buy",
+     "qty": 21,
+     "price": 282.9914,
+     "ccy": "DKK",
+     "dkk": 5952.82,
+     "time": "2026-11-05T08:00Z"
+    },
+    {
+     "date": "2026-11-05",
+     "symbol": "DANSKE.CO",
+     "side": "buy",
+     "qty": 10,
+     "price": 358.3791,
+     "ccy": "DKK",
+     "dkk": 3593.79,
+     "time": "2026-11-05T08:00Z"
+    },
+    {
+     "date": "2026-11-05",
+     "symbol": "VWS.CO",
+     "side": "buy",
+     "qty": 15,
+     "price": 205.7028,
+     "ccy": "DKK",
+     "dkk": 3095.54,
+     "time": "2026-11-05T08:00Z"
+    },
+    {
+     "date": "2026-11-05",
+     "symbol": "NKT.CO",
+     "side": "buy",
+     "qty": 4,
+     "price": 835.4175,
+     "ccy": "DKK",
+     "dkk": 3351.67,
+     "time": "2026-11-05T08:00Z"
+    }
+   ],
    "notes": [
     {
      "date": "2026-11-03",
      "text": "Bought Novo Nordisk, Danske Bank, Vestas and NKT."
+    },
+    {
+     "date": "2026-11-04",
+     "text": "BRUNO holds all four Danish positions (Novo, Danske Bank, Vestas, NKT) today with no trades."
     }
    ],
-   "pending_orders": 4,
+   "pending_orders": 0,
    "status": "racing"
   },
   {
@@ -131,20 +221,24 @@
     }
    ],
    "summary": {
-    "value": 20000.0,
-    "return_pct": 0.0,
-    "max_dd_pct": 0.0,
+    "value": 19845.5,
+    "return_pct": -0.77,
+    "max_dd_pct": -0.77,
     "sharpe": null,
-    "days": 1,
+    "days": 2,
     "trades": 5,
     "win_rate_pct": null,
-    "vs_spy_pp": null,
-    "vs_c25_pp": null
+    "vs_spy_pp": -2.28,
+    "vs_c25_pp": -2.59
    },
    "equity": [
     {
      "date": "2026-11-03",
      "value": 20000.0
+    },
+    {
+     "date": "2026-11-04",
+     "value": 19845.5
     }
    ],
    "cash_dkk": 4793.56,
@@ -154,40 +248,40 @@
      "qty": 3,
      "ccy": "USD",
      "since": "2026-11-04",
-     "value_dkk": 3787.89,
-     "pnl_pct": -0.47
-    },
-    {
-     "symbol": "CRWD",
-     "qty": 2,
-     "ccy": "USD",
-     "since": "2026-11-04",
-     "value_dkk": 3272.66,
-     "pnl_pct": -0.5
+     "value_dkk": 3775.15,
+     "pnl_pct": -0.81
     },
     {
      "symbol": "AMD",
      "qty": 1,
      "ccy": "USD",
      "since": "2026-11-04",
-     "value_dkk": 3237.87,
-     "pnl_pct": -0.5
+     "value_dkk": 3259.19,
+     "pnl_pct": 0.15
+    },
+    {
+     "symbol": "CRWD",
+     "qty": 2,
+     "ccy": "USD",
+     "since": "2026-11-04",
+     "value_dkk": 3213.98,
+     "pnl_pct": -2.29
     },
     {
      "symbol": "DELL",
      "qty": 1,
      "ccy": "USD",
      "since": "2026-11-04",
-     "value_dkk": 2467.69,
-     "pnl_pct": -0.57
+     "value_dkk": 2482.9,
+     "pnl_pct": 0.04
     },
     {
      "symbol": "PANW",
      "qty": 1,
      "ccy": "USD",
      "since": "2026-11-04",
-     "value_dkk": 2361.46,
-     "pnl_pct": -0.58
+     "value_dkk": 2320.73,
+     "pnl_pct": -2.3
     }
    ],
    "trades": [
@@ -267,20 +361,24 @@
     }
    ],
    "summary": {
-    "value": 20000.0,
-    "return_pct": 0.0,
-    "max_dd_pct": 0.0,
+    "value": 19946.9,
+    "return_pct": -0.27,
+    "max_dd_pct": -0.27,
     "sharpe": null,
-    "days": 1,
+    "days": 2,
     "trades": 2,
     "win_rate_pct": null,
-    "vs_spy_pp": null,
-    "vs_c25_pp": null
+    "vs_spy_pp": -1.78,
+    "vs_c25_pp": -2.09
    },
    "equity": [
     {
      "date": "2026-11-03",
      "value": 20000.0
+    },
+    {
+     "date": "2026-11-04",
+     "value": 19946.9
     }
    ],
    "cash_dkk": 1615.36,
@@ -290,16 +388,16 @@
      "qty": 44,
      "ccy": "USD",
      "since": "2026-11-04",
-     "value_dkk": 9185.83,
-     "pnl_pct": -0.38
+     "value_dkk": 9180.24,
+     "pnl_pct": -0.44
     },
     {
      "symbol": "VNQ",
      "qty": 14,
      "ccy": "USD",
      "since": "2026-11-04",
-     "value_dkk": 9129.14,
-     "pnl_pct": -0.38
+     "value_dkk": 9151.3,
+     "pnl_pct": -0.14
     }
    ],
    "trades": [
@@ -353,21 +451,63 @@
     "return_pct": 0.0,
     "max_dd_pct": 0.0,
     "sharpe": null,
-    "days": 1,
-    "trades": 0,
+    "days": 2,
+    "trades": 2,
     "win_rate_pct": null,
-    "vs_spy_pp": null,
-    "vs_c25_pp": null
+    "vs_spy_pp": -1.51,
+    "vs_c25_pp": -1.82
    },
    "equity": [
     {
      "date": "2026-11-03",
      "value": 20000.0
+    },
+    {
+     "date": "2026-11-04",
+     "value": 20000.0
     }
    ],
-   "cash_dkk": 20000.0,
-   "holdings": [],
-   "trades": [],
+   "cash_dkk": 12326.62,
+   "holdings": [
+    {
+     "symbol": "XYZ",
+     "qty": 7,
+     "ccy": "USD",
+     "since": "2026-11-05",
+     "value_dkk": 3999.67,
+     "pnl_pct": -0.47
+    },
+    {
+     "symbol": "PNDORA.CO",
+     "qty": 4,
+     "ccy": "DKK",
+     "since": "2026-11-05",
+     "value_dkk": 3643.2,
+     "pnl_pct": -0.32
+    }
+   ],
+   "trades": [
+    {
+     "date": "2026-11-05",
+     "symbol": "XYZ",
+     "side": "buy",
+     "qty": 7,
+     "price": 85.7328,
+     "ccy": "USD",
+     "dkk": 4018.36,
+     "time": "2026-11-05T14:51Z"
+    },
+    {
+     "date": "2026-11-05",
+     "symbol": "PNDORA.CO",
+     "side": "buy",
+     "qty": 4,
+     "price": 911.2554,
+     "ccy": "DKK",
+     "dkk": 3655.02,
+     "time": "2026-11-05T14:51Z"
+    }
+   ],
    "notes": [],
    "pending_orders": 0,
    "status": "racing"
@@ -427,6 +567,10 @@
     {
      "date": "2026-11-03",
      "value": 5037.0967
+    },
+    {
+     "date": "2026-11-04",
+     "value": 5113.0891
     }
    ]
   },
@@ -456,6 +600,10 @@
     {
      "date": "2026-11-03",
      "value": 1990.4
+    },
+    {
+     "date": "2026-11-04",
+     "value": 2026.62
     }
    ]
   }
@@ -465,6 +613,10 @@
    {
     "date": "2026-11-03",
     "text": "Mega Zord studied the starting grid, benched one idea that failed its test drive, and sent a single Danish longboat out to race."
+   },
+   {
+    "date": "2026-11-04",
+    "text": "Mega Zord watched the first real trades land, kept its Viking longboat on the starting line, and held its fire."
    }
   ]
  }
