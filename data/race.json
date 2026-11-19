@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-11-18T14:55:03+00:00",
- "as_of": "2026-11-17",
+ "generated_at": "2026-11-19T14:58:50+00:00",
+ "as_of": "2026-11-18",
  "start_cash_dkk": 20000.0,
  "costs": {
   "commission_pct": 0.08,
@@ -37,11 +37,11 @@
     "return_pct": 0.0,
     "max_dd_pct": 0.0,
     "sharpe": null,
-    "days": 11,
+    "days": 12,
     "trades": 0,
     "win_rate_pct": null,
-    "vs_spy_pp": 1.18,
-    "vs_c25_pp": -0.13
+    "vs_spy_pp": 1.44,
+    "vs_c25_pp": 0.91
    },
    "equity": [
     {
@@ -87,16 +87,16 @@
     {
      "date": "2026-11-17",
      "value": 20000.0
+    },
+    {
+     "date": "2026-11-18",
+     "value": 20000.0
     }
    ],
    "cash_dkk": 20000.0,
    "holdings": [],
    "trades": [],
    "notes": [
-    {
-     "date": "2026-11-04",
-     "text": "Saxoman stays 100% in cash: no buy passed the valuation and Kelly gates this evening."
-    },
     {
      "date": "2026-11-05",
      "text": "Saxoman stays 100% in cash after the AI chip selloff: no pick passed the Kelly gate today."
@@ -132,6 +132,10 @@
     {
      "date": "2026-11-17",
      "text": "Saxoman holds 100% cash today: NVDA, HD and AMD were all vetoed by the Kelly gate."
+    },
+    {
+     "date": "2026-11-18",
+     "text": "Saxoman stays in cash today: LOW, TJX and PANW were checked after earnings but none passed the Kelly gate."
     }
    ],
    "pending_orders": 0,
@@ -158,15 +162,15 @@
     }
    ],
    "summary": {
-    "value": 19569.04,
-    "return_pct": -2.15,
-    "max_dd_pct": -2.35,
-    "sharpe": -2.94,
-    "days": 11,
+    "value": 19358.44,
+    "return_pct": -3.21,
+    "max_dd_pct": -3.4,
+    "sharpe": -4.12,
+    "days": 12,
     "trades": 6,
     "win_rate_pct": null,
-    "vs_spy_pp": -0.97,
-    "vs_c25_pp": -2.28
+    "vs_spy_pp": -1.77,
+    "vs_c25_pp": -2.3
    },
    "equity": [
     {
@@ -212,6 +216,10 @@
     {
      "date": "2026-11-17",
      "value": 19569.04
+    },
+    {
+     "date": "2026-11-18",
+     "value": 19358.44
     }
    ],
    "cash_dkk": 2314.04,
@@ -221,32 +229,32 @@
      "qty": 27,
      "ccy": "DKK",
      "since": "2026-11-05",
-     "value_dkk": 7438.5,
-     "pnl_pct": -2.7
+     "value_dkk": 7329.15,
+     "pnl_pct": -4.13
     },
     {
      "symbol": "DANSKE.CO",
      "qty": 10,
      "ccy": "DKK",
      "since": "2026-11-05",
-     "value_dkk": 3674.0,
-     "pnl_pct": 2.23
+     "value_dkk": 3638.0,
+     "pnl_pct": 1.23
     },
     {
      "symbol": "NKT.CO",
      "qty": 4,
      "ccy": "DKK",
      "since": "2026-11-05",
-     "value_dkk": 3336.0,
-     "pnl_pct": -0.47
+     "value_dkk": 3348.0,
+     "pnl_pct": -0.11
     },
     {
      "symbol": "VWS.CO",
      "qty": 15,
      "ccy": "DKK",
      "since": "2026-11-05",
-     "value_dkk": 2806.5,
-     "pnl_pct": -9.34
+     "value_dkk": 2729.25,
+     "pnl_pct": -11.83
     }
    ],
    "trades": [
@@ -313,10 +321,6 @@
    ],
    "notes": [
     {
-     "date": "2026-11-04",
-     "text": "Bruno holds Novo, Danske, Vestas and NKT; no trades today."
-    },
-    {
      "date": "2026-11-05",
      "text": "Bruno holds all four Danish positions and makes no trades today."
     },
@@ -351,6 +355,10 @@
     {
      "date": "2026-11-17",
      "text": "Bruno holds all four Danish positions today and makes no trades."
+    },
+    {
+     "date": "2026-11-18",
+     "text": "Bruno holds all four Danish positions today; no trades after NKT's Q3 report."
     }
    ],
    "pending_orders": 0,
@@ -377,15 +385,15 @@
     }
    ],
    "summary": {
-    "value": 19019.38,
-    "return_pct": -4.9,
+    "value": 19607.18,
+    "return_pct": -1.96,
     "max_dd_pct": -9.7,
-    "sharpe": -1.71,
-    "days": 11,
+    "sharpe": -0.45,
+    "days": 12,
     "trades": 11,
     "win_rate_pct": 0.0,
-    "vs_spy_pp": -3.72,
-    "vs_c25_pp": -5.03
+    "vs_spy_pp": -0.52,
+    "vs_c25_pp": -1.05
    },
    "equity": [
     {
@@ -431,49 +439,53 @@
     {
      "date": "2026-11-17",
      "value": 19019.38
+    },
+    {
+     "date": "2026-11-18",
+     "value": 19607.18
     }
    ],
    "cash_dkk": 3524.2,
    "holdings": [
     {
+     "symbol": "AMD",
+     "qty": 1,
+     "ccy": "USD",
+     "since": "2026-11-04",
+     "value_dkk": 3604.54,
+     "pnl_pct": 10.76
+    },
+    {
      "symbol": "GMAB.CO",
      "qty": 1,
      "ccy": "DKK",
      "since": "2026-11-10",
-     "value_dkk": 3502.0,
-     "pnl_pct": -3.52
+     "value_dkk": 3496.0,
+     "pnl_pct": -3.69
     },
     {
      "symbol": "DEMANT.CO",
      "qty": 10,
      "ccy": "DKK",
      "since": "2026-11-17",
-     "value_dkk": 3474.0,
-     "pnl_pct": -0.34
-    },
-    {
-     "symbol": "AMD",
-     "qty": 1,
-     "ccy": "USD",
-     "since": "2026-11-04",
-     "value_dkk": 3421.09,
-     "pnl_pct": 5.13
+     "value_dkk": 3448.0,
+     "pnl_pct": -1.08
     },
     {
      "symbol": "CRWD",
      "qty": 2,
      "ccy": "USD",
      "since": "2026-11-04",
-     "value_dkk": 2984.46,
-     "pnl_pct": -9.26
+     "value_dkk": 3223.24,
+     "pnl_pct": -2.0
     },
     {
      "symbol": "PANW",
      "qty": 1,
      "ccy": "USD",
      "since": "2026-11-04",
-     "value_dkk": 2101.89,
-     "pnl_pct": -11.51
+     "value_dkk": 2311.19,
+     "pnl_pct": -2.7
     }
    ],
    "trades": [
@@ -616,15 +628,15 @@
     }
    ],
    "summary": {
-    "value": 19670.69,
-    "return_pct": -1.65,
-    "max_dd_pct": -1.65,
-    "sharpe": -4.21,
-    "days": 11,
+    "value": 19503.87,
+    "return_pct": -2.48,
+    "max_dd_pct": -2.48,
+    "sharpe": -5.75,
+    "days": 12,
     "trades": 2,
     "win_rate_pct": null,
-    "vs_spy_pp": -0.47,
-    "vs_c25_pp": -1.78
+    "vs_spy_pp": -1.04,
+    "vs_c25_pp": -1.57
    },
    "equity": [
     {
@@ -670,6 +682,10 @@
     {
      "date": "2026-11-17",
      "value": 19670.69
+    },
+    {
+     "date": "2026-11-18",
+     "value": 19503.87
     }
    ],
    "cash_dkk": 1615.36,
@@ -679,16 +695,16 @@
      "qty": 14,
      "ccy": "USD",
      "since": "2026-11-04",
-     "value_dkk": 9028.0,
-     "pnl_pct": -1.48
+     "value_dkk": 9060.11,
+     "pnl_pct": -1.13
     },
     {
      "symbol": "DBC",
      "qty": 44,
      "ccy": "USD",
      "since": "2026-11-04",
-     "value_dkk": 9027.32,
-     "pnl_pct": -2.1
+     "value_dkk": 8828.39,
+     "pnl_pct": -4.26
     }
    ],
    "trades": [
@@ -738,15 +754,15 @@
     }
    ],
    "summary": {
-    "value": 19700.95,
-    "return_pct": -1.5,
-    "max_dd_pct": -2.57,
-    "sharpe": -1.52,
-    "days": 11,
+    "value": 19561.51,
+    "return_pct": -2.19,
+    "max_dd_pct": -3.26,
+    "sharpe": -2.17,
+    "days": 12,
     "trades": 6,
     "win_rate_pct": 0.0,
-    "vs_spy_pp": -0.32,
-    "vs_c25_pp": -1.63
+    "vs_spy_pp": -0.75,
+    "vs_c25_pp": -1.28
    },
    "equity": [
     {
@@ -792,6 +808,10 @@
     {
      "date": "2026-11-17",
      "value": 19700.95
+    },
+    {
+     "date": "2026-11-18",
+     "value": 19561.51
     }
    ],
    "cash_dkk": 5395.55,
@@ -801,32 +821,32 @@
      "qty": 15,
      "ccy": "DKK",
      "since": "2026-11-06",
-     "value_dkk": 4132.5,
-     "pnl_pct": 2.11
+     "value_dkk": 4071.75,
+     "pnl_pct": 0.61
     },
     {
      "symbol": "XYZ",
      "qty": 7,
      "ccy": "USD",
      "since": "2026-11-05",
-     "value_dkk": 3772.85,
-     "pnl_pct": -6.11
+     "value_dkk": 3760.45,
+     "pnl_pct": -6.42
     },
     {
      "symbol": "ABNB",
      "qty": 3,
      "ccy": "USD",
      "since": "2026-11-09",
-     "value_dkk": 3688.92,
-     "pnl_pct": -5.91
+     "value_dkk": 3675.87,
+     "pnl_pct": -6.24
     },
     {
      "symbol": "APP",
      "qty": 1,
      "ccy": "USD",
      "since": "2026-11-06",
-     "value_dkk": 2711.13,
-     "pnl_pct": 9.33
+     "value_dkk": 2657.89,
+     "pnl_pct": 7.18
     }
    ],
    "trades": [
@@ -917,15 +937,15 @@
     }
    ],
    "summary": {
-    "value": 20051.44,
-    "return_pct": 0.26,
-    "max_dd_pct": -1.94,
-    "sharpe": null,
-    "days": 9,
+    "value": 19893.44,
+    "return_pct": -0.53,
+    "max_dd_pct": -2.71,
+    "sharpe": -0.78,
+    "days": 10,
     "trades": 4,
     "win_rate_pct": null,
-    "vs_spy_pp": -1.82,
-    "vs_c25_pp": 1.69
+    "vs_spy_pp": -2.35,
+    "vs_c25_pp": 1.92
    },
    "equity": [
     {
@@ -963,6 +983,10 @@
     {
      "date": "2026-11-17",
      "value": 20051.44
+    },
+    {
+     "date": "2026-11-18",
+     "value": 19893.44
     }
    ],
    "cash_dkk": 1230.44,
@@ -972,32 +996,32 @@
      "qty": 16,
      "ccy": "DKK",
      "since": "2026-11-06",
-     "value_dkk": 5049.6,
-     "pnl_pct": 5.92
+     "value_dkk": 5027.2,
+     "pnl_pct": 5.45
     },
     {
      "symbol": "DANSKE.CO",
      "qty": 13,
      "ccy": "DKK",
      "since": "2026-11-06",
-     "value_dkk": 4776.2,
-     "pnl_pct": 2.47
+     "value_dkk": 4729.4,
+     "pnl_pct": 1.46
     },
     {
      "symbol": "DEMANT.CO",
      "qty": 13,
      "ccy": "DKK",
      "since": "2026-11-06",
-     "value_dkk": 4503.2,
-     "pnl_pct": -7.96
+     "value_dkk": 4482.4,
+     "pnl_pct": -8.38
     },
     {
      "symbol": "JYSK.CO",
      "qty": 4,
      "ccy": "DKK",
      "since": "2026-11-06",
-     "value_dkk": 4492.0,
-     "pnl_pct": 0.98
+     "value_dkk": 4424.0,
+     "pnl_pct": -0.54
     }
    ],
    "trades": [
@@ -1114,6 +1138,10 @@
     {
      "date": "2026-11-17",
      "value": 4977.545
+    },
+    {
+     "date": "2026-11-18",
+     "value": 4964.7977
     }
    ]
   },
@@ -1183,6 +1211,10 @@
     {
      "date": "2026-11-17",
      "value": 1993.03
+    },
+    {
+     "date": "2026-11-18",
+     "value": 1972.23
     }
    ]
   }
@@ -1232,6 +1264,10 @@
    {
     "date": "2026-11-17",
     "text": "Mega Zord tested a calmer Viking in the lab, found it no faster, and left the longship rowing as it is."
+   },
+   {
+    "date": "2026-11-18",
+    "text": "Mega Zord kept its hands in its pockets: VIKING VELOCITY is still rowing ahead of the Danish index, so no tinkering today."
    }
   ]
  }
